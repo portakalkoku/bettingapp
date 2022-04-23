@@ -6,3 +6,7 @@
 //
 
 import Foundation
+public protocol TargetType {
+    var url: String  { get }
+    var parameters: [String: String] { get }
+}
