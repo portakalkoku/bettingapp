@@ -10,3 +10,8 @@ public protocol TargetType {
     var url: String  { get }
     var parameters: [String: String] { get }
 }
+
+enum APIError: Error {
+    case wrongMapping
+    case serviceError
+}
