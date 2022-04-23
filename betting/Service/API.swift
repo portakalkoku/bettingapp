@@ -11,6 +11,29 @@ public protocol TargetType {
     var parameters: [String: String] { get }
 }
 
+class API {
+    
+    static let sharedInstance = API()
+    private var baseUrl: URL {
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
+           let dictionaryList = NSDictionary(contentsOfFile: path),
+           let apiUrl = dictionaryList["API_URL"] as? String, let url = URL(string: apiUrl) {
+            return url
+        } else {
+            fatalError("the api url must be registered into info-plist file as an API_URL key")
+        }
+    }
+    
+    private var apiKey: String {
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
+           let dictionaryList = NSDictionary(contentsOfFile: path),
+           let apiKey = dictionaryList["API_KEY"] as? String {
+            return apiKey
+        } else {
+            fatalError("the api url must be registered into info-plist file as an API_URL key")
+        }
+    }
+}
 extension API {
     class func request(type: TargetType, completion: @escaping (Result<Data, APIError>) -> ()) {
         let urlEncoder = URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(), destination: .queryString)
