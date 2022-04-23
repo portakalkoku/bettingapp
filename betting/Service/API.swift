@@ -5,7 +5,8 @@
 //  Created by Çağrı Portakalkökü on 23.04.2022.
 //
 
-import Foundation
+import Alamofire
+
 public protocol TargetType {
     var url: String  { get }
     var parameters: [String: String] { get }
