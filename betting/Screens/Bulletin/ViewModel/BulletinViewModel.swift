@@ -40,7 +40,9 @@ class BulletinViewModel: BulletinViewModelProtocol {
     }
     
     func requestGroups() {
+        delegate?.showLoading()
         api.request(type: RequestType.sports) { result in
+            self.delegate?.hideLoading()
             switch result {
             case let .success(data):
                 let jsonDecoder = JSONDecoder()
@@ -59,7 +61,9 @@ class BulletinViewModel: BulletinViewModelProtocol {
     }
     
     func requestOdds(key: String) {
+        delegate?.showLoading()
         api.request(type: RequestType.odds(key: key)) { result in
+            self.delegate?.hideLoading()
             switch result {
             case let .success(data):
                 let jsonDecoder = JSONDecoder()
