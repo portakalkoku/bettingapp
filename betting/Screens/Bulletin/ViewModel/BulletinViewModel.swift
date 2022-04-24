@@ -5,6 +5,8 @@ protocol BulletinViewModelProtocol {
 protocol BulletinViewModelDelegate: AnyObject {
     func reloadTable()
 }
+    private var sports: [BulletinModels.Sport] = []
+    private var groups: [String] = []
     
     let api: API
     init(
