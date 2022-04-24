@@ -14,7 +14,6 @@ public protocol TargetType {
 
 class API {
     
-    static let sharedInstance = API()
     private var baseUrl: URL {
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
            let dictionaryList = NSDictionary(contentsOfFile: path),
@@ -36,13 +35,13 @@ class API {
     }
 }
 extension API {
-    class func request(type: TargetType, completion: @escaping (Result<Data, APIError>) -> ()) {
+     func request(type: TargetType, completion: @escaping (Result<Data, APIError>) -> ()) {
         let urlEncoder = URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(), destination: .queryString)
         
         var parameters = type.parameters
-        parameters["apiKey"] = sharedInstance.apiKey
+        parameters["apiKey"] = apiKey
         
-        let url = sharedInstance.baseUrl.appendingPathComponent(type.url)
+        let url = baseUrl.appendingPathComponent(type.url)
         
         AF.request(url,
                    method: .get,
