@@ -17,7 +17,10 @@ protocol BulletinViewModelDelegate: AnyObject {
 class BulletinViewModel: BulletinViewModelProtocol {
     weak var delegate: BulletinViewModelDelegate?
     private var sports: [BulletinModels.Sport] = []
-    private var groups: [String] = []
+    private var groups: [BulletinModels.GroupCellModel] = []
+    private var filteredSports: [BulletinModels.Sport] = []
+    private var selectedGroup: String?
+    private var odds: [BulletinModels.Odds] = []
     
     let api: API
     init(
