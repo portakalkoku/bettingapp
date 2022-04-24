@@ -1,3 +1,7 @@
+protocol BulletinViewModelProtocol {
+    func getGroupsList() -> [String]
+    func requestSports()
+}
     
     let api: API
     init(
