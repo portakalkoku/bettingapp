@@ -30,25 +30,27 @@ class LeagueCell: UITableViewCell {
         sport: BulletinModels.Sport,
         odds: [BulletinModels.Odds]
     ) {
+        self.sport = sport
         titleLabel.text = sport.title
         self.odds = odds
-        if odds.count > 0 {
-            tableView.isHidden = false
-        } else {
-            tableView.isHidden = true
-        }
         tableView.reloadData()
         layoutIfNeeded()
+        layoutSubviews()
     }
     
     override func layoutSubviews() {
         tableViewHeightConstraint.constant = tableView.calculateTableHeight(rowCount: odds.count)
+    }
+    @IBAction func didTapSport(_ sender: Any) {
+        guard let sport = sport else { return }
+        delegate?.didTapSport(key: sport.key)
     }
 }
 
 extension LeagueCell: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
+        cell.reloadWith(data: "\(odds[indexPath.row].home_team)-\(odds[indexPath.row].away_team)")
         return cell
     }
     
