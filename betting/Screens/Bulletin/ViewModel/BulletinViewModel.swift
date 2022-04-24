@@ -1,10 +1,20 @@
+//
+//  BulletinViewModel.swift
+//  betting
+//
+//  Created by Çağrı Portakalkökü on 24.04.2022.
+//
+
 protocol BulletinViewModelProtocol {
     func getGroupsList() -> [String]
     func requestSports()
 }
+
 protocol BulletinViewModelDelegate: AnyObject {
     func reloadTable()
 }
+
+class BulletinViewModel: BulletinViewModelProtocol {
     weak var delegate: BulletinViewModelDelegate?
     private var sports: [BulletinModels.Sport] = []
     private var groups: [String] = []
@@ -15,6 +25,7 @@ protocol BulletinViewModelDelegate: AnyObject {
     ) {
         self.api = api
     }
+    
     func requestSports() {
         api.request(type: RequestType.sports) { result in
             switch result {
