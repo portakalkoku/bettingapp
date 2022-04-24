@@ -5,13 +5,23 @@
 //  Created by Çağrı Portakalkökü on 24.04.2022.
 //
 
+import Foundation
+
 protocol BulletinViewModelProtocol {
-    func getGroupsList() -> [String]
-    func requestSports()
+    func getGroupsList() -> [BulletinModels.GroupCellModel]
+    func getLeagueList() -> [BulletinModels.Sport]
+    func getOddsOfSport(sportKey: String) -> [BulletinModels.Odds]
+    func requestGroups()
+    func requestOdds(key: String)
+    func selectGroup(group: String)
 }
 
 protocol BulletinViewModelDelegate: AnyObject {
-    func reloadTable()
+    func reloadCollectionView()
+    func reloadTableView()
+    func showErrorMessage()
+    func showLoading()
+    func hideLoading()
 }
 
 class BulletinViewModel: BulletinViewModelProtocol {
@@ -29,28 +39,55 @@ class BulletinViewModel: BulletinViewModelProtocol {
         self.api = api
     }
     
-    func requestSports() {
+    func requestGroups() {
         api.request(type: RequestType.sports) { result in
             switch result {
             case let .success(data):
                 let jsonDecoder = JSONDecoder()
                 guard let data = try? jsonDecoder.decode([BulletinModels.Sport].self, from: data) else {
-                    //wrong
+                    self.delegate?.showErrorMessage()
                     return
                 }
-                self.groups = Array(Set(data.map({$0.group})))
+                
                 self.sports = data
-                self.delegate?.reloadTable()
-            case let .failure(_):
-                break
+                self.groups = self.processGroups(stringSet: Set(data.map({$0.group})))
+                self.delegate?.reloadCollectionView()
+            case .failure(_):
+                self.delegate?.showErrorMessage()
             }
         }
     }
     
-    func getGroupsList() -> [String] {
+    func requestOdds(key: String) {
+        api.request(type: RequestType.odds(key: key)) { result in
+            switch result {
+            case let .success(data):
+                let jsonDecoder = JSONDecoder()
+                guard let data = try? jsonDecoder.decode([BulletinModels.Odds].self, from: data) else {
+                    self.delegate?.showErrorMessage()
+                    return
+                }    
+                if !self.odds.contains(where: {$0.sport_key == data[0].sport_key}) {
+                    self.odds.append(contentsOf: data)
+                    self.delegate?.reloadTableView()
+                }
+            case .failure(_):
+                self.delegate?.showErrorMessage()
+            }
+        }
+    }
+
+    func getGroupsList() -> [BulletinModels.GroupCellModel] {
         groups
     }
     
+    func getLeagueList() -> [BulletinModels.Sport] {
+        filteredSports
+    }
+    
+    func getOddsOfSport(sportKey: String) -> [BulletinModels.Odds] {
+        return odds.filter({$0.sport_key == sportKey})
+    }
     
     func selectGroup(group: String) {
         selectedGroup = group
@@ -117,3 +154,9 @@ extension BulletinViewModel {
         return groups
     }
     
+    private func filterLeagues() -> [BulletinModels.Sport] {
+        return sports.filter({$0.group == selectedGroup})
+    }
+
+}
+
