@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BulletinViewController" customModule="betting" customModuleProvider="target">
             <connections>
                 <outlet property="filterCollectionView" destination="7WJ-47-OaZ" id="qP9-vq-sSI"/>
+                <outlet property="tableView" destination="u41-Ok-mmY" id="8Nh-qr-5zp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +22,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7WJ-47-OaZ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                    <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Tht-vf-ktk"/>
                     </constraints>
@@ -32,13 +33,21 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="u41-Ok-mmY">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u41-Ok-mmY" secondAttribute="bottom" id="1c3-jq-57R"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u41-Ok-mmY" secondAttribute="trailing" id="Mtm-BQ-GcK"/>
                 <constraint firstItem="7WJ-47-OaZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="UGD-pJ-Ng6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7WJ-47-OaZ" secondAttribute="trailing" id="fwW-g9-fGc"/>
+                <constraint firstItem="u41-Ok-mmY" firstAttribute="top" secondItem="7WJ-47-OaZ" secondAttribute="bottom" id="jeh-UV-Edn"/>
                 <constraint firstItem="7WJ-47-OaZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="q4H-cR-2si"/>
+                <constraint firstItem="u41-Ok-mmY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="toy-dv-1ck"/>
             </constraints>
             <point key="canvasLocation" x="132" y="86"/>
         </view>
@@ -46,9 +55,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
