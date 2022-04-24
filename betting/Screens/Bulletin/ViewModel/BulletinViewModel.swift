@@ -1,3 +1,10 @@
+    
+    let api: API
+    init(
+        api: API
+    ) {
+        self.api = api
+    }
     func requestSports() {
         api.request(type: RequestType.sports) { result in
             switch result {
