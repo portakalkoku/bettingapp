@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LeagueCellDelegate: AnyObject {
+    func didTapSport(key: String)
+}
+
 class LeagueCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
@@ -17,16 +21,24 @@ class LeagueCell: UITableViewCell {
         }
     }
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    weak var delegate: LeagueCellDelegate?
+    
     var odds: [BulletinModels.Odds] = []
+    private var sport: BulletinModels.Sport?
+    
     func reloadWith(
-        txt: String,
+        sport: BulletinModels.Sport,
         odds: [BulletinModels.Odds]
     ) {
-        titleLabel.text = txt
+        titleLabel.text = sport.title
         self.odds = odds
+        if odds.count > 0 {
+            tableView.isHidden = false
+        } else {
+            tableView.isHidden = true
+        }
         tableView.reloadData()
         layoutIfNeeded()
-        layoutSubviews()
     }
     
     override func layoutSubviews() {
