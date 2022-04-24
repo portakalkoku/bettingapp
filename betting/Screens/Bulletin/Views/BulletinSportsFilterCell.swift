@@ -11,8 +11,13 @@ class BulletinSportsFilterCell: UICollectionViewCell {
     @IBOutlet weak var groupIcon: UIImageView!
     @IBOutlet weak var groupTitle: UILabel!
     
-    func reloadWith(text: String) {
-        groupTitle.text = text
+    func reloadWith(data: BulletinModels.GroupCellModel) {
+        groupTitle.text = data.title
+        groupIcon.image = UIImage(named: data.image)
+        if data.selected {
+            backgroundColor = .green
+        } else {
+            backgroundColor = .white
+        }
     }
-    
 }
