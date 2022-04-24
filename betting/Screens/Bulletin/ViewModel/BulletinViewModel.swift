@@ -32,3 +32,9 @@ protocol BulletinViewModelDelegate: AnyObject {
             }
         }
     }
+    
+    func getGroupsList() -> [String] {
+        groups
+    }
+    
+}
