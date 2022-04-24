@@ -24,6 +24,12 @@ class BulletinViewController: UIViewController {
             tableView.register(UINib(nibName: "LeagueCell", bundle: nil), forCellReuseIdentifier: "LeagueCell")
         }
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!{
+        didSet {
+            activityIndicator.isHidden = true
+        }
+    }
+    
     init(
         viewModel: BulletinViewModelProtocol
     ) {
@@ -53,11 +59,13 @@ extension BulletinViewController: BulletinViewModelDelegate {
     }
     
     func showLoading() {
-        //showloading
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
     }
     
     func hideLoading() {
-        //hideloading
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
     }
     
     func showErrorMessage() {
@@ -90,8 +98,8 @@ extension BulletinViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell") as! LeagueCell
         let league = viewModel.getLeagueList()[indexPath.row]
-//        cell.reloadWith(txt: league.title, odds: viewModel.getOddsOfSport(sportKey: league.key))
         cell.reloadWith(sport: league, odds: viewModel.getOddsOfSport(sportKey: league.key))
+        cell.delegate = self
         return cell
     }
 
