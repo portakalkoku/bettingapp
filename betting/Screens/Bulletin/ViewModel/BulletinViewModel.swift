@@ -49,3 +49,32 @@ class BulletinViewModel: BulletinViewModelProtocol {
     }
     
 }
+
+extension BulletinViewModel {
+    private func getSportIcon(sport: SportType?) -> String {
+        switch sport {
+        case .soccer:
+            return "football"
+        case .basketball:
+            return "basketball"
+        case .baseball:
+            return "baseball"
+        case .americanFootball:
+            return "american-football"
+        case .rugby:
+            return "rugby"
+        case .golf:
+            return "golf"
+        case .martialArts:
+            return "martial-arts"
+        case .aussieFootball:
+            return "aussie-rules"
+        case .iceHockey:
+            return "ice-hockey"
+        case .cricket:
+            return "cricket"
+        case .none:
+            return "medal"
+        }
+    }
+    
