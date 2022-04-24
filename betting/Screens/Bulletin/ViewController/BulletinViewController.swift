@@ -17,6 +17,13 @@ class BulletinViewController: UIViewController {
             filterCollectionView.register(UINib(nibName: "BulletinSportsFilterCell", bundle: nil), forCellWithReuseIdentifier: "BulletinSportsFilterCell")
         }
     }
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.register(UINib(nibName: "LeagueCell", bundle: nil), forCellReuseIdentifier: "LeagueCell")
+        }
+    }
     init(
         viewModel: BulletinViewModelProtocol
     ) {
@@ -31,14 +38,30 @@ class BulletinViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.requestSports()
+        viewModel.requestGroups()
     }
 
 }
 
 extension BulletinViewController: BulletinViewModelDelegate {
-    func reloadTable() {
+    func reloadCollectionView() {
         filterCollectionView.reloadData()
+    }
+    
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
+    func showLoading() {
+        //showloading
+    }
+    
+    func hideLoading() {
+        //hideloading
+    }
+    
+    func showErrorMessage() {
+        // TODO: (cagri) - show error message
     }
 }
 
@@ -49,8 +72,30 @@ extension BulletinViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BulletinSportsFilterCell", for: indexPath) as! BulletinSportsFilterCell
-        let groupName = viewModel.getGroupsList()[indexPath.row]
-        cell.reloadWith(text: groupName)
+        let group = viewModel.getGroupsList()[indexPath.row]
+        cell.reloadWith(data: group)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectGroup(group: viewModel.getGroupsList()[indexPath.row].title)
+    }
+}
+
+extension BulletinViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.getLeagueList().count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell") as! LeagueCell
+        let league = viewModel.getLeagueList()[indexPath.row].key
+        cell.reloadWith(txt: viewModel.getLeagueList()[indexPath.row].title, odds: viewModel.getOddsOfSport(sportKey: league))
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedLeague = viewModel.getLeagueList()[indexPath.row]
+        viewModel.requestOdds(key: selectedLeague.key)
     }
 }
