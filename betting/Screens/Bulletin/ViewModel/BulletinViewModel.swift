@@ -48,6 +48,14 @@ class BulletinViewModel: BulletinViewModelProtocol {
         groups
     }
     
+    
+    func selectGroup(group: String) {
+        selectedGroup = group
+        groups = processGroups(stringSet: Set(sports.map({$0.group})))
+        filteredSports = filterLeagues()
+        delegate?.reloadCollectionView()
+        delegate?.reloadTableView()
+    }
 }
 
 extension BulletinViewModel {
