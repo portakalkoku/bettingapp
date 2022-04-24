@@ -10,6 +10,11 @@
 		0ACE9597E9E5C9CAE4007961 /* Pods_betting_bettingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893EB8DBEA04EAA1C7F31EDC /* Pods_betting_bettingUITests.framework */; };
 		2A3CE15FC69730681DCEB8FF /* Pods_betting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78EA238F8D8E9CA0C4128C4 /* Pods_betting.framework */; };
 		3352732E42586EC6C8FAA726 /* Pods_bettingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */; };
+		5F6489832815DE780028FE34 /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6489812815DE780028FE34 /* LeagueCell.swift */; };
+		5F6489842815DE780028FE34 /* LeagueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6489822815DE780028FE34 /* LeagueCell.xib */; };
+		5F6489872815EE570028FE34 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6489852815EE570028FE34 /* EventCell.swift */; };
+		5F6489882815EE570028FE34 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6489862815EE570028FE34 /* EventCell.xib */; };
+		5F64898B2815F82E0028FE34 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64898A2815F82E0028FE34 /* UITableView+Extensions.swift */; };
 		5F6F848E2815418900366D56 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6F848C2815418900366D56 /* BulletinViewController.swift */; };
 		5F6F848F2815418900366D56 /* BulletinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6F848D2815418900366D56 /* BulletinViewController.xib */; };
 		5F6F84982815427200366D56 /* BulletinSportsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6F84962815427200366D56 /* BulletinSportsFilterCell.swift */; };
@@ -50,6 +55,11 @@
 /* Begin PBXFileReference section */
 		1DDACBB60D508729D22A8AC7 /* Pods-betting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-betting.release.xcconfig"; path = "Target Support Files/Pods-betting/Pods-betting.release.xcconfig"; sourceTree = "<group>"; };
 		279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bettingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F6489812815DE780028FE34 /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
+		5F6489822815DE780028FE34 /* LeagueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueCell.xib; sourceTree = "<group>"; };
+		5F6489852815EE570028FE34 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		5F6489862815EE570028FE34 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		5F64898A2815F82E0028FE34 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		5F6F848C2815418900366D56 /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
 		5F6F848D2815418900366D56 /* BulletinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulletinViewController.xib; sourceTree = "<group>"; };
 		5F6F84962815427200366D56 /* BulletinSportsFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinSportsFilterCell.swift; sourceTree = "<group>"; };
@@ -132,9 +142,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5F6489892815F8190028FE34 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F64898A2815F82E0028FE34 /* UITableView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5F6F848B281540C900366D56 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5F6489892815F8190028FE34 /* Extensions */,
 				5F6F8490281541ED00366D56 /* Bulletin */,
 			);
 			path = Screens;
@@ -166,6 +185,10 @@
 				5F6F848D2815418900366D56 /* BulletinViewController.xib */,
 				5F6F84962815427200366D56 /* BulletinSportsFilterCell.swift */,
 				5F6F84972815427200366D56 /* BulletinSportsFilterCell.xib */,
+				5F6489812815DE780028FE34 /* LeagueCell.swift */,
+				5F6489822815DE780028FE34 /* LeagueCell.xib */,
+				5F6489852815EE570028FE34 /* EventCell.swift */,
+				5F6489862815EE570028FE34 /* EventCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,9 +384,11 @@
 			files = (
 				5F790B1F2814974700B4F4F9 /* LaunchScreen.storyboard in Resources */,
 				5F6F848F2815418900366D56 /* BulletinViewController.xib in Resources */,
+				5F6489842815DE780028FE34 /* LeagueCell.xib in Resources */,
 				5F790B1C2814974700B4F4F9 /* Assets.xcassets in Resources */,
 				5F6F84992815427200366D56 /* BulletinSportsFilterCell.xib in Resources */,
 				5F790B1A2814974100B4F4F9 /* Main.storyboard in Resources */,
+				5F6489882815EE570028FE34 /* EventCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,11 +520,14 @@
 				5F790B472814ADB200B4F4F9 /* API+Odds.swift in Sources */,
 				5F790B132814974100B4F4F9 /* AppDelegate.swift in Sources */,
 				5F6F849F2815496A00366D56 /* BulletinModels.swift in Sources */,
+				5F6489872815EE570028FE34 /* EventCell.swift in Sources */,
 				5F6F849D2815448600366D56 /* BulletinViewModel.swift in Sources */,
 				5F790B452814996500B4F4F9 /* API.swift in Sources */,
 				5F790B152814974100B4F4F9 /* SceneDelegate.swift in Sources */,
+				5F64898B2815F82E0028FE34 /* UITableView+Extensions.swift in Sources */,
 				5F6F848E2815418900366D56 /* BulletinViewController.swift in Sources */,
 				5F6F849B281543CC00366D56 /* BulletinViewController+Build.swift in Sources */,
+				5F6489832815DE780028FE34 /* LeagueCell.swift in Sources */,
 				5F6F84982815427200366D56 /* BulletinSportsFilterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,7 +588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				API_KEY = 9eacac71ab8f945546b853ad2a56f881;
+				API_KEY = eb044188be6c7ee899f4a47a71f9f156;
 				API_URL = "https://api.the-odds-api.com/v4";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -622,7 +650,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				API_KEY = 9eacac71ab8f945546b853ad2a56f881;
+				API_KEY = eb044188be6c7ee899f4a47a71f9f156;
 				API_URL = "https://api.the-odds-api.com/v4";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
