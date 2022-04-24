@@ -5,6 +5,7 @@ protocol BulletinViewModelProtocol {
 protocol BulletinViewModelDelegate: AnyObject {
     func reloadTable()
 }
+    weak var delegate: BulletinViewModelDelegate?
     private var sports: [BulletinModels.Sport] = []
     private var groups: [String] = []
     
