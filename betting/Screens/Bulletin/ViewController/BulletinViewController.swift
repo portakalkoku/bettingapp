@@ -89,13 +89,16 @@ extension BulletinViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell") as! LeagueCell
-        let league = viewModel.getLeagueList()[indexPath.row].key
-        cell.reloadWith(txt: viewModel.getLeagueList()[indexPath.row].title, odds: viewModel.getOddsOfSport(sportKey: league))
+        let league = viewModel.getLeagueList()[indexPath.row]
+//        cell.reloadWith(txt: league.title, odds: viewModel.getOddsOfSport(sportKey: league.key))
+        cell.reloadWith(sport: league, odds: viewModel.getOddsOfSport(sportKey: league.key))
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedLeague = viewModel.getLeagueList()[indexPath.row]
-        viewModel.requestOdds(key: selectedLeague.key)
+
+}
+
+extension BulletinViewController: LeagueCellDelegate {
+    func didTapSport(key: String) {
+        viewModel.requestOdds(key: key)
     }
 }
