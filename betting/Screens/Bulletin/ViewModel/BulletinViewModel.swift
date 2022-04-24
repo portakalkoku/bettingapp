@@ -2,6 +2,9 @@ protocol BulletinViewModelProtocol {
     func getGroupsList() -> [String]
     func requestSports()
 }
+protocol BulletinViewModelDelegate: AnyObject {
+    func reloadTable()
+}
     
     let api: API
     init(
