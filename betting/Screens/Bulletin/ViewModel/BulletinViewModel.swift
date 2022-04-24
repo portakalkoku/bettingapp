@@ -78,3 +78,31 @@ extension BulletinViewModel {
         }
     }
     
+    private func processGroups(stringSet: Set<String>) -> [BulletinModels.GroupCellModel] {
+        var groups: [BulletinModels.GroupCellModel]  = []
+        if let selectedGroup = selectedGroup {
+            groups = stringSet.map { key in
+                return BulletinModels.GroupCellModel.init(
+                    image: getSportIcon(sport: .init(rawValue: key)),
+                    title: key,
+                    selected: key == selectedGroup)
+            }.sorted(by: {$0.title > $1.title})
+        } else {
+            groups = stringSet.map { key in
+                return BulletinModels.GroupCellModel.init(
+                    image: getSportIcon(sport: .init(rawValue: key)),
+                    title: key,
+                    selected: false
+                )
+            }.sorted(by: {$0.title > $1.title})
+            
+            let firstElement = groups[0]
+            groups.remove(at: 0)
+            groups.insert(.init(image: firstElement.image, title: firstElement.title, selected: true), at: 0)
+            selectedGroup = firstElement.title
+            filteredSports = filterLeagues()
+            delegate?.reloadTableView()
+        }
+        return groups
+    }
+    
