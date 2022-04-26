@@ -26,11 +26,17 @@ class EventCell: UITableViewCell {
 
 extension EventCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        odds.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OddCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OddCell", for: indexPath) as! OddCell
+        cell.reloadWith(odd: odds[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width/3
+        return .init(width: width, height: width)
     }
 }
