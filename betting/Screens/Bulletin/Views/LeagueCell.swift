@@ -50,7 +50,7 @@ class LeagueCell: UITableViewCell {
 extension LeagueCell: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
-        cell.reloadWith(data: "\(odds[indexPath.row].home_team)-\(odds[indexPath.row].away_team)")
+        cell.reloadWith(data: events[indexPath.row])
         return cell
     }
     
