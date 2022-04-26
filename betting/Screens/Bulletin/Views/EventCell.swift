@@ -18,8 +18,10 @@ class EventCell: UITableViewCell {
         }
     }
     
-    func reloadWith(data: String) {
-        eventNameLabel.text = data
+    private var odds: [BulletinModels.OddCellModel] = []
+    func reloadWith(data: BulletinModels.EventCellModel) {
+        eventNameLabel.text = data.matchName
+        odds = data.odds
         collectionView.reloadData()
     }
 }
