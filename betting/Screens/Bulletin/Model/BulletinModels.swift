@@ -53,6 +53,12 @@ enum BulletinModels {
         let odds: [OddCellModel]
     }
     
+    struct OddCellModel {
+        let price: Double
+        let selected: Bool
+        let type: OddType
+    }
+    
     enum OddType: Int {
         case home = 1
         case draw = 2
