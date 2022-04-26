@@ -24,12 +24,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ccT-Y5-92S">
-                        <rect key="frame" x="40" y="210" width="260" height="85"/>
+                        <rect key="frame" x="20" y="210" width="300" height="85"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="85" id="rvq-WL-za2"/>
                         </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="rK5-Gj-BlO">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="rK5-Gj-BlO">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -38,8 +38,8 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ccT-Y5-92S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="I1y-xh-1T1"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ccT-Y5-92S" secondAttribute="trailing" constant="20" id="i2H-L1-rM5"/>
+                    <constraint firstItem="ccT-Y5-92S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="I1y-xh-1T1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ccT-Y5-92S" secondAttribute="trailing" id="i2H-L1-rM5"/>
                     <constraint firstItem="g0f-wV-ieJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="iJF-TM-zBr"/>
                     <constraint firstAttribute="bottomMargin" secondItem="ccT-Y5-92S" secondAttribute="bottom" id="trr-BC-aa9"/>
                     <constraint firstItem="g0f-wV-ieJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="wl5-xp-2kh"/>
