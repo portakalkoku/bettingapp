@@ -10,7 +10,7 @@ import Foundation
 protocol BulletinViewModelProtocol {
     func getGroupsList() -> [BulletinModels.GroupCellModel]
     func getLeagueList() -> [BulletinModels.Sport]
-    func getOddsOfSport(sportKey: String) -> [BulletinModels.Odds]
+    func getOddsOfSport(sportKey: String) -> [BulletinModels.EventCellModel]
     func requestGroups()
     func requestOdds(key: String)
     func selectGroup(group: String)
