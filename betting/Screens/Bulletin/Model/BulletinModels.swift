@@ -47,6 +47,12 @@ enum BulletinModels {
             let price: Double
         }
     }
+    
+    struct EventCellModel {
+        let matchName: String
+        let odds: [OddCellModel]
+    }
+    
 }
 
 enum SportType: String, Codable {
