@@ -53,6 +53,11 @@ enum BulletinModels {
         let odds: [OddCellModel]
     }
     
+    enum OddType: Int {
+        case home = 1
+        case draw = 2
+        case away = 3
+    }
 }
 
 enum SportType: String, Codable {
