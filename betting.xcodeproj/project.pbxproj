@@ -10,6 +10,7 @@
 		0ACE9597E9E5C9CAE4007961 /* Pods_betting_bettingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 893EB8DBEA04EAA1C7F31EDC /* Pods_betting_bettingUITests.framework */; };
 		2A3CE15FC69730681DCEB8FF /* Pods_betting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78EA238F8D8E9CA0C4128C4 /* Pods_betting.framework */; };
 		3352732E42586EC6C8FAA726 /* Pods_bettingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */; };
+		5F114E9B2818879A006FCAA7 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */; };
 		5F6489832815DE780028FE34 /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6489812815DE780028FE34 /* LeagueCell.swift */; };
 		5F6489842815DE780028FE34 /* LeagueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6489822815DE780028FE34 /* LeagueCell.xib */; };
 		5F6489872815EE570028FE34 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6489852815EE570028FE34 /* EventCell.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		1DDACBB60D508729D22A8AC7 /* Pods-betting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-betting.release.xcconfig"; path = "Target Support Files/Pods-betting/Pods-betting.release.xcconfig"; sourceTree = "<group>"; };
 		279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bettingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		5F6489812815DE780028FE34 /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
 		5F6489822815DE780028FE34 /* LeagueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueCell.xib; sourceTree = "<group>"; };
 		5F6489852815EE570028FE34 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				5F64898A2815F82E0028FE34 /* UITableView+Extensions.swift */,
+				5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				5F6F848E2815418900366D56 /* BulletinViewController.swift in Sources */,
 				5F6F849B281543CC00366D56 /* BulletinViewController+Build.swift in Sources */,
 				5F6489832815DE780028FE34 /* LeagueCell.swift in Sources */,
+				5F114E9B2818879A006FCAA7 /* UIFont+Extensions.swift in Sources */,
 				5F6F84982815427200366D56 /* BulletinSportsFilterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
