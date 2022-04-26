@@ -98,7 +98,7 @@ extension BulletinViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell") as! LeagueCell
         let league = viewModel.getLeagueList()[indexPath.row]
-        cell.reloadWith(sport: league, odds: viewModel.getOddsOfSport(sportKey: league.key))
+        cell.reloadWith(sport: league, events: viewModel.getOddsOfSport(sportKey: league.key))
         cell.delegate = self
         return cell
     }
