@@ -61,3 +61,31 @@ enum SportType: String, Codable {
     case iceHockey = "Ice Hockey"
     case cricket = "Cricket"
 }
+
+extension SportType {
+    func getSportIcon() -> String {
+        switch self {
+        case .soccer:
+            return "football"
+        case .basketball:
+            return "basketball"
+        case .baseball:
+            return "baseball"
+        case .americanFootball:
+            return "american-football"
+        case .rugby:
+            return "rugby"
+        case .golf:
+            return "golf"
+        case .martialArts:
+            return "martial-arts"
+        case .aussieFootball:
+            return "aussie-rules"
+        case .iceHockey:
+            return "ice-hockey"
+        case .cricket:
+            return "cricket"
+        }
+    }
+    
+}
