@@ -38,7 +38,7 @@ extension EventCell: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width/3
+        let width = collectionView.frame.width/CGFloat(odds.count)
         return .init(width: width, height: width)
     }
 }
