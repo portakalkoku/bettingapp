@@ -15,8 +15,12 @@ class BulletinSportsFilterCell: UICollectionViewCell {
         groupTitle.text = data.title
         groupIcon.image = UIImage(named: data.image)
         if data.selected {
-            backgroundColor = .green
+            groupTitle.font = UIFont.customFont(name: .futuraBold, size: 14.0)
+            groupTitle.textColor = .white
+            backgroundColor = .systemGreen
         } else {
+            groupTitle.font = UIFont.customFont(name: .futuraMedium, size: 14.0)
+            groupTitle.textColor = .black
             backgroundColor = .white
         }
     }
