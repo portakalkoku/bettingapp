@@ -23,23 +23,23 @@ class LeagueCell: UITableViewCell {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     weak var delegate: LeagueCellDelegate?
     
-    var odds: [BulletinModels.Odds] = []
+    var events: [BulletinModels.EventCellModel] = []
     private var sport: BulletinModels.Sport?
     
     func reloadWith(
         sport: BulletinModels.Sport,
-        odds: [BulletinModels.Odds]
+        events: [BulletinModels.EventCellModel]
     ) {
         self.sport = sport
         titleLabel.text = sport.title
-        self.odds = odds
+        self.events = events
         tableView.reloadData()
         layoutIfNeeded()
         layoutSubviews()
     }
     
     override func layoutSubviews() {
-        tableViewHeightConstraint.constant = tableView.calculateTableHeight(rowCount: odds.count)
+        tableViewHeightConstraint.constant = tableView.calculateTableHeight(rowCount: events.count)
     }
     @IBAction func didTapSport(_ sender: Any) {
         guard let sport = sport else { return }
@@ -55,6 +55,6 @@ extension LeagueCell: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return odds.count
+        return events.count
     }
 }
