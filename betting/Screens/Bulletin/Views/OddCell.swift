@@ -13,6 +13,8 @@ class OddCell: UICollectionViewCell {
         didSet {
             containerView.layer.cornerRadius = 5.0
             containerView.clipsToBounds = true
+            containerView.layer.borderColor = UIColor.black.cgColor
+            containerView.layer.borderWidth = 1.0
         }
     }
     @IBOutlet weak var indicatorView: UIView! {
@@ -24,9 +26,17 @@ class OddCell: UICollectionViewCell {
     }
     @IBOutlet weak var oddLabel: UILabel!
     @IBOutlet weak var indicatorLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    func reloadWith(odd: BulletinModels.OddCellModel) {
+        switch odd.type {
+        case .draw:
+            indicatorLabel.text = "X"
+        case .away:
+            indicatorLabel.text = "2"
+        case .home:
+            indicatorLabel.text = "1"
+        }
+        
+        oddLabel.text = "\(odd.price)"
     }
-
 }
