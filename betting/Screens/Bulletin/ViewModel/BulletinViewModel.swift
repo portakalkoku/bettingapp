@@ -168,14 +168,14 @@ extension BulletinViewModel {
         if let selectedGroup = selectedGroup {
             groups = stringSet.map { key in
                 return BulletinModels.GroupCellModel.init(
-                    image: getSportIcon(sport: .init(rawValue: key)),
+                    image: SportType.init(rawValue: key)?.getSportIcon() ?? "medal",
                     title: key,
                     selected: key == selectedGroup)
             }.sorted(by: {$0.title > $1.title})
         } else {
             groups = stringSet.map { key in
                 return BulletinModels.GroupCellModel.init(
-                    image: getSportIcon(sport: .init(rawValue: key)),
+                    image: SportType.init(rawValue: key)?.getSportIcon() ?? "medal",
                     title: key,
                     selected: false
                 )
