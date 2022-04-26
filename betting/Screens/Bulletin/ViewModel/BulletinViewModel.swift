@@ -89,8 +89,41 @@ class BulletinViewModel: BulletinViewModelProtocol {
         filteredSports
     }
     
-    func getOddsOfSport(sportKey: String) -> [BulletinModels.Odds] {
-        return odds.filter({$0.sport_key == sportKey})
+    func getOddsOfSport(sportKey: String) -> [BulletinModels.EventCellModel] {
+        getOutcomes(sportKey: sportKey)
+    }
+    
+    private func getOutcomes(
+        sportKey: String
+    ) -> [BulletinModels.EventCellModel] {
+        
+        let filteredOdds = odds.filter({$0.sport_key == sportKey})
+        let mapped: [BulletinModels.EventCellModel?] = filteredOdds.map { odd in
+            if odd.bookmakers.count > 0, let outcomes = odd.bookmakers[0].markets.first(where: {$0.key == "h2h"})?.outcomes {
+                var odds: [BulletinModels.OddCellModel] = []
+                outcomes.forEach { outcome in
+                    if outcome.name == odd.home_team {
+                        odds.append(.init(price: outcome.price, selected: false, type: .home))
+                    } else if outcome.name == odd.away_team {
+                        odds.append(.init(price: outcome.price, selected: false, type: .away))
+                    } else {
+                        odds.append(.init(price: outcome.price, selected: false, type: .draw))
+                    }
+                }
+                
+                odds = odds.sorted(by: {$0.type.rawValue < $1.type.rawValue})
+                return .init(
+                    matchName: "\(odd.home_team)-\(odd.away_team)",
+                    odds: odds
+                )
+            }
+            return nil
+        }
+        
+        guard let returnedList: [BulletinModels.EventCellModel] = mapped.compactMap({$0}) as? [BulletinModels.EventCellModel] else {
+            return []
+        }
+        return returnedList
     }
     
     func selectGroup(group: String) {
