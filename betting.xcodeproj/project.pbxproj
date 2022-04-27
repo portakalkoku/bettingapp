@@ -42,6 +42,7 @@
 		5F790B362814974700B4F4F9 /* bettingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B352814974700B4F4F9 /* bettingUITestsLaunchTests.swift */; };
 		5F790B452814996500B4F4F9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B442814996500B4F4F9 /* API.swift */; };
 		5F790B472814ADB200B4F4F9 /* API+Odds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F790B462814ADB200B4F4F9 /* API+Odds.swift */; };
+		5F7DD5D8281970AB004AB1A9 /* BulletinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7DD5D7281970AB004AB1A9 /* BulletinRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		5F790B352814974700B4F4F9 /* bettingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bettingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5F790B442814996500B4F4F9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5F790B462814ADB200B4F4F9 /* API+Odds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Odds.swift"; sourceTree = "<group>"; };
+		5F7DD5D7281970AB004AB1A9 /* BulletinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinRouter.swift; sourceTree = "<group>"; };
 		74B8837013A2B1C22BB1EE44 /* Pods-betting-bettingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-betting-bettingUITests.debug.xcconfig"; path = "Target Support Files/Pods-betting-bettingUITests/Pods-betting-bettingUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		893EB8DBEA04EAA1C7F31EDC /* Pods_betting_bettingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_betting_bettingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D802C15968CA9E8AF1F49E /* Pods-betting-bettingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-betting-bettingUITests.release.xcconfig"; path = "Target Support Files/Pods-betting-bettingUITests/Pods-betting-bettingUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		5F6F8490281541ED00366D56 /* Bulletin */ = {
 			isa = PBXGroup;
 			children = (
+				5F7DD5D62819709B004AB1A9 /* Router */,
 				5F6F84942815422600366D56 /* ViewModel */,
 				5F6F84932815422100366D56 /* Model */,
 				5F6F84922815421000366D56 /* Views */,
@@ -331,6 +334,14 @@
 				5F790B462814ADB200B4F4F9 /* API+Odds.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		5F7DD5D62819709B004AB1A9 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				5F7DD5D7281970AB004AB1A9 /* BulletinRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -597,6 +608,7 @@
 				5F6489832815DE780028FE34 /* LeagueCell.swift in Sources */,
 				5F114EAE2818B719006FCAA7 /* CartModels.swift in Sources */,
 				5F114E9B2818879A006FCAA7 /* UIFont+Extensions.swift in Sources */,
+				5F7DD5D8281970AB004AB1A9 /* BulletinRouter.swift in Sources */,
 				5F6F84982815427200366D56 /* BulletinSportsFilterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
