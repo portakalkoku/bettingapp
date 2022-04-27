@@ -11,6 +11,13 @@
 		2A3CE15FC69730681DCEB8FF /* Pods_betting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78EA238F8D8E9CA0C4128C4 /* Pods_betting.framework */; };
 		3352732E42586EC6C8FAA726 /* Pods_bettingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */; };
 		5F114E9B2818879A006FCAA7 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */; };
+		5F114EA02818A79C006FCAA7 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114E9E2818A79B006FCAA7 /* MainNavigationController.swift */; };
+		5F114EA42818AA0B006FCAA7 /* CartContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F114EA32818AA0B006FCAA7 /* CartContentView.xib */; };
+		5F114EA62818ABCA006FCAA7 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114EA52818ABCA006FCAA7 /* CartView.swift */; };
+		5F114EA82818AE2B006FCAA7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114EA72818AE2B006FCAA7 /* UIView+Extensions.swift */; };
+		5F114EAB2818B692006FCAA7 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114EAA2818B692006FCAA7 /* Cart.swift */; };
+		5F114EAE2818B719006FCAA7 /* CartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114EAD2818B719006FCAA7 /* CartModels.swift */; };
+		5F114EB02818C645006FCAA7 /* CartContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114EAF2818C645006FCAA7 /* CartContentView.swift */; };
 		5F6489832815DE780028FE34 /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6489812815DE780028FE34 /* LeagueCell.swift */; };
 		5F6489842815DE780028FE34 /* LeagueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6489822815DE780028FE34 /* LeagueCell.xib */; };
 		5F6489872815EE570028FE34 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6489852815EE570028FE34 /* EventCell.swift */; };
@@ -59,6 +66,13 @@
 		1DDACBB60D508729D22A8AC7 /* Pods-betting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-betting.release.xcconfig"; path = "Target Support Files/Pods-betting/Pods-betting.release.xcconfig"; sourceTree = "<group>"; };
 		279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bettingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		5F114E9E2818A79B006FCAA7 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		5F114EA32818AA0B006FCAA7 /* CartContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartContentView.xib; sourceTree = "<group>"; };
+		5F114EA52818ABCA006FCAA7 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		5F114EA72818AE2B006FCAA7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		5F114EAA2818B692006FCAA7 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		5F114EAD2818B719006FCAA7 /* CartModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModels.swift; sourceTree = "<group>"; };
+		5F114EAF2818C645006FCAA7 /* CartContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartContentView.swift; sourceTree = "<group>"; };
 		5F6489812815DE780028FE34 /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
 		5F6489822815DE780028FE34 /* LeagueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueCell.xib; sourceTree = "<group>"; };
 		5F6489852815EE570028FE34 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -148,11 +162,46 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5F114E9C2818A765006FCAA7 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				5F114EA22818A9EC006FCAA7 /* Views */,
+				5F114E9E2818A79B006FCAA7 /* MainNavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		5F114EA22818A9EC006FCAA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			path = "Vİew";
+			sourceTree = "<group>";
+		};
+		5F114EA92818B688006FCAA7 /* RX */ = {
+			isa = PBXGroup;
+			children = (
+				5F114EAC2818B706006FCAA7 /* Model */,
+				5F114EAA2818B692006FCAA7 /* Cart.swift */,
+			);
+			path = RX;
+			sourceTree = "<group>";
+		};
+		5F114EAC2818B706006FCAA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F114EAD2818B719006FCAA7 /* CartModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5F6489892815F8190028FE34 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				5F64898A2815F82E0028FE34 /* UITableView+Extensions.swift */,
 				5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */,
+				5F114EA72818AE2B006FCAA7 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -160,6 +209,8 @@
 		5F6F848B281540C900366D56 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				5F114EA92818B688006FCAA7 /* RX */,
+				5F114E9C2818A765006FCAA7 /* Navigation */,
 				5F6489892815F8190028FE34 /* Extensions */,
 				5F6F8490281541ED00366D56 /* Bulletin */,
 			);
@@ -189,6 +240,9 @@
 		5F6F84922815421000366D56 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F114EA32818AA0B006FCAA7 /* CartContentView.xib */,
+				5F114EAF2818C645006FCAA7 /* CartContentView.swift */,
+				5F114EA52818ABCA006FCAA7 /* CartView.swift */,
 				5F6F848D2815418900366D56 /* BulletinViewController.xib */,
 				5F6F84962815427200366D56 /* BulletinSportsFilterCell.swift */,
 				5F6F84972815427200366D56 /* BulletinSportsFilterCell.xib */,
@@ -395,6 +449,7 @@
 				5F6F848F2815418900366D56 /* BulletinViewController.xib in Resources */,
 				5F6489842815DE780028FE34 /* LeagueCell.xib in Resources */,
 				5F64898F281601550028FE34 /* OddCell.xib in Resources */,
+				5F114EA42818AA0B006FCAA7 /* CartContentView.xib in Resources */,
 				5F790B1C2814974700B4F4F9 /* Assets.xcassets in Resources */,
 				5F6F84992815427200366D56 /* BulletinSportsFilterCell.xib in Resources */,
 				5F790B1A2814974100B4F4F9 /* Main.storyboard in Resources */,
@@ -528,7 +583,11 @@
 			files = (
 				5F790B172814974100B4F4F9 /* ViewController.swift in Sources */,
 				5F790B472814ADB200B4F4F9 /* API+Odds.swift in Sources */,
+				5F114EAB2818B692006FCAA7 /* Cart.swift in Sources */,
+				5F114EA02818A79C006FCAA7 /* MainNavigationController.swift in Sources */,
+				5F114EA62818ABCA006FCAA7 /* CartView.swift in Sources */,
 				5F790B132814974100B4F4F9 /* AppDelegate.swift in Sources */,
+				5F114EB02818C645006FCAA7 /* CartContentView.swift in Sources */,
 				5F64898E281601550028FE34 /* OddCell.swift in Sources */,
 				5F6F849F2815496A00366D56 /* BulletinModels.swift in Sources */,
 				5F6489872815EE570028FE34 /* EventCell.swift in Sources */,
@@ -536,9 +595,11 @@
 				5F790B452814996500B4F4F9 /* API.swift in Sources */,
 				5F790B152814974100B4F4F9 /* SceneDelegate.swift in Sources */,
 				5F64898B2815F82E0028FE34 /* UITableView+Extensions.swift in Sources */,
+				5F114EA82818AE2B006FCAA7 /* UIView+Extensions.swift in Sources */,
 				5F6F848E2815418900366D56 /* BulletinViewController.swift in Sources */,
 				5F6F849B281543CC00366D56 /* BulletinViewController+Build.swift in Sources */,
 				5F6489832815DE780028FE34 /* LeagueCell.swift in Sources */,
+				5F114EAE2818B719006FCAA7 /* CartModels.swift in Sources */,
 				5F114E9B2818879A006FCAA7 /* UIFont+Extensions.swift in Sources */,
 				5F6F84982815427200366D56 /* BulletinSportsFilterCell.swift in Sources */,
 			);
