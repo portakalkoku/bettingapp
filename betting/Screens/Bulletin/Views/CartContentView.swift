@@ -16,7 +16,7 @@ class CartContentView: UIView {
     @IBOutlet weak var multiplierLabel: UILabel!
     weak var delegate: CartContentDelegate?
     func reloadMultiplier(multiplier: Double) {
-        multiplierLabel.text = String(format: "%.2f", multiplier)
+        multiplierLabel.text = multiplier.convertToTwoDecimalString()
     }
     @IBAction func didTapCheckout(_ sender: Any) {
         delegate?.didTapCheckout()
