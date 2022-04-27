@@ -63,6 +63,9 @@ class BulletinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.requestGroups()
+        hideKeyboardWhenTappedAround()
+    }
+    
     }
 }
 
