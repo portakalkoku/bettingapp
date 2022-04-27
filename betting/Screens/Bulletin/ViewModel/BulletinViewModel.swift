@@ -80,7 +80,7 @@ extension BulletinViewModel: BulletinViewModelProtocol {
                 guard let data = try? jsonDecoder.decode([BulletinModels.Odds].self, from: data) else {
                     self.delegate?.showErrorMessage()
                     return
-                }    
+                }
                 if !self.odds.contains(where: {$0.sport_key == data[0].sport_key}) {
                     self.odds.append(contentsOf: data)
                     self.delegate?.reloadTableView()
@@ -102,40 +102,7 @@ extension BulletinViewModel: BulletinViewModelProtocol {
     func getOddsOfSport(sportKey: String) -> [BulletinModels.EventCellModel] {
         getOutcomes(sportKey: sportKey)
     }
-    
-    private func getOutcomes(
-        sportKey: String
-    ) -> [BulletinModels.EventCellModel] {
-        
-        let filteredOdds = odds.filter({$0.sport_key == sportKey})
-        let mapped: [BulletinModels.EventCellModel?] = filteredOdds.map { odd in
-            if odd.bookmakers.count > 0, let outcomes = odd.bookmakers[0].markets.first(where: {$0.key == "h2h"})?.outcomes {
-                var odds: [BulletinModels.OddCellModel] = []
-                outcomes.forEach { outcome in
-                    if outcome.name == odd.home_team {
-                        odds.append(.init(price: outcome.price, selected: false, type: .home))
-                    } else if outcome.name == odd.away_team {
-                        odds.append(.init(price: outcome.price, selected: false, type: .away))
-                    } else {
-                        odds.append(.init(price: outcome.price, selected: false, type: .draw))
-                    }
-                }
-                
-                odds = odds.sorted(by: {$0.type.rawValue < $1.type.rawValue})
-                return .init(
-                    matchName: "\(odd.home_team)-\(odd.away_team)",
-                    odds: odds
-                )
-            }
-            return nil
-        }
-        
-        guard let returnedList: [BulletinModels.EventCellModel] = mapped.compactMap({$0}) as? [BulletinModels.EventCellModel] else {
-            return []
-        }
-        return returnedList
-    }
-    
+  
     func selectGroup(group: String) {
         selectedGroup = group
         groups = processGroups(stringSet: Set(sports.map({$0.group})))
@@ -191,6 +158,39 @@ extension BulletinViewModel {
     private func filterLeagues() -> [BulletinModels.Sport] {
         return sports.filter({$0.group == selectedGroup})
     }
-
+    
+    private func getOutcomes(
+        sportKey: String
+    ) -> [BulletinModels.EventCellModel] {
+        
+        let filteredOdds = odds.filter({$0.sport_key == sportKey})
+        let mapped: [BulletinModels.EventCellModel?] = filteredOdds.map { odd in
+            if odd.bookmakers.count > 0, let outcomes = odd.bookmakers[0].markets.first(where: {$0.key == "h2h"})?.outcomes {
+                var odds: [BulletinModels.OddCellModel] = []
+                outcomes.forEach { outcome in
+                    if outcome.name == odd.home_team {
+                        odds.append(.init(id: odd.id, price: outcome.price, selected: cart.checkIfOddExistInCart(odd.id, type: .home), type: .home))
+                    } else if outcome.name == odd.away_team {
+                        odds.append(.init(id: odd.id, price: outcome.price, selected: cart.checkIfOddExistInCart(odd.id, type: .away), type: .away))
+                    } else {
+                        odds.append(.init(id: odd.id, price: outcome.price, selected: cart.checkIfOddExistInCart(odd.id, type: .draw), type: .draw))
+                    }
+                }
+                
+                odds = odds.sorted(by: {$0.type.rawValue < $1.type.rawValue})
+                return .init(
+                    matchName: "\(odd.home_team)-\(odd.away_team)",
+                    odds: odds
+                )
+            }
+            return nil
+        }
+        
+        guard let returnedList: [BulletinModels.EventCellModel] = mapped.compactMap({$0}) as? [BulletinModels.EventCellModel] else {
+            return []
+        }
+        return returnedList
+    }
 }
+
 
