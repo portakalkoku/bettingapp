@@ -13,6 +13,7 @@
                 <outlet property="activityIndicator" destination="mES-fY-bpo" id="DyP-Ui-ic0"/>
                 <outlet property="cartView" destination="gWQ-AQ-6xU" id="Bnu-JA-Eda"/>
                 <outlet property="filterCollectionView" destination="7WJ-47-OaZ" id="qP9-vq-sSI"/>
+                <outlet property="searchBar" destination="jhR-qr-ERq" id="cxP-vH-WaQ"/>
                 <outlet property="tableView" destination="u41-Ok-mmY" id="8Nh-qr-5zp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,7 +37,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="u41-Ok-mmY">
-                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <rect key="frame" x="0.0" y="111" width="375" height="556"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mES-fY-bpo">
@@ -51,6 +52,10 @@
                         <constraint firstAttribute="height" constant="100" id="hm4-PG-baL"/>
                     </constraints>
                 </view>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="jhR-qr-ERq">
+                    <rect key="frame" x="0.0" y="60" width="375" height="51"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -59,15 +64,18 @@
                 <constraint firstItem="mES-fY-bpo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="F3d-ou-5iv"/>
                 <constraint firstItem="gWQ-AQ-6xU" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-10" id="KK1-qO-4pX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u41-Ok-mmY" secondAttribute="trailing" id="Mtm-BQ-GcK"/>
+                <constraint firstItem="jhR-qr-ERq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="TUk-2K-JSD"/>
                 <constraint firstItem="7WJ-47-OaZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="UGD-pJ-Ng6"/>
+                <constraint firstItem="jhR-qr-ERq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ejr-hs-nox"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7WJ-47-OaZ" secondAttribute="trailing" id="fwW-g9-fGc"/>
-                <constraint firstItem="u41-Ok-mmY" firstAttribute="top" secondItem="7WJ-47-OaZ" secondAttribute="bottom" id="jeh-UV-Edn"/>
+                <constraint firstItem="u41-Ok-mmY" firstAttribute="top" secondItem="jhR-qr-ERq" secondAttribute="bottom" id="hgE-Ig-mtT"/>
+                <constraint firstItem="jhR-qr-ERq" firstAttribute="top" secondItem="7WJ-47-OaZ" secondAttribute="bottom" id="pvu-nA-NOx"/>
                 <constraint firstItem="7WJ-47-OaZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="q4H-cR-2si"/>
                 <constraint firstItem="gWQ-AQ-6xU" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="rYB-XO-5zP"/>
                 <constraint firstItem="u41-Ok-mmY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="toy-dv-1ck"/>
                 <constraint firstItem="mES-fY-bpo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="zWj-Vg-sab"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="86"/>
+            <point key="canvasLocation" x="132" y="85.907046476761622"/>
         </view>
     </objects>
     <resources>
