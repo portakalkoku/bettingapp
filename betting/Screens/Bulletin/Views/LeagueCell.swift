@@ -58,3 +58,9 @@ extension LeagueCell: UITableViewDelegate, UITableViewDataSource{
         return events.count
     }
 }
+
+extension LeagueCell: EventCellDelegate {
+    func didTapOdd(_ odd: CartModels.Event) {
+        delegate?.didTapOdd(odd)
+    }
+}
