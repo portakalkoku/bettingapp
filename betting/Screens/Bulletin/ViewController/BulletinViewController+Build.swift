@@ -10,7 +10,7 @@ import UIKit
 
 extension BulletinViewController {
     class func build(api: API) -> UIViewController {
-        let viewModel = BulletinViewModel(api: api)
+        let viewModel = BulletinViewModel(api: api, cart: Cart())
         let viewController = BulletinViewController(viewModel: viewModel)
         viewModel.delegate = viewController
         return viewController
