@@ -16,6 +16,7 @@ protocol BulletinViewModelProtocol {
     func selectGroup(group: String)
     func addOrRemoveEventFromCart(event: CartModels.Event)
     func searchBy(_ text: String)
+    func didTapRouteToCheckout()
 }
 
 protocol BulletinViewModelDelegate: AnyObject {
@@ -25,6 +26,7 @@ protocol BulletinViewModelDelegate: AnyObject {
     func showLoading()
     func hideLoading()
     func reloadCartView(multiplier: Double)
+    func routeToCheckout(cart: Cart)
 }
 
 class BulletinViewModel {
@@ -121,6 +123,10 @@ extension BulletinViewModel: BulletinViewModelProtocol {
     func searchBy(_ text: String) {
         searchText = text
         delegate?.reloadTableView()
+    }
+    
+    func didTapRouteToCheckout() {
+        delegate?.routeToCheckout(cart: cart)
     }
 }
 

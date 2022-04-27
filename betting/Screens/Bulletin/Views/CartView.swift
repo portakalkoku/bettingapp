@@ -7,15 +7,18 @@
 
 import UIKit
 
-protocol CartViewDelegate {
+protocol CartViewDelegate: AnyObject {
+    func didTapCheckout()
 }
 
 class CartView: UIView {
     var cartContentView: CartContentView? = nil
+    weak var delegate: CartViewDelegate?
     override func awakeFromNib() {
         isHidden = true
         guard let cartContentView = CartContentView().loadNib() as? CartContentView else { return }
         self.cartContentView = cartContentView
+        self.cartContentView?.delegate = self
         self.addSubview(cartContentView)
     }
     

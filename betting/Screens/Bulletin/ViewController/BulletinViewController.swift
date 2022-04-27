@@ -33,6 +33,7 @@ class BulletinViewController: UIViewController {
         didSet {
             cartView.layer.cornerRadius = 5.0
             cartView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+            cartView.delegate = self
         }
     }
     @IBOutlet weak var searchBar: UISearchBar! {
@@ -93,6 +94,10 @@ extension BulletinViewController: BulletinViewModelDelegate {
     func showErrorMessage() {
         // TODO: (cagri) - show error message
     }
+    
+    func routeToCheckout(cart: Cart) {
+        router.routeToCheckout(with: cart)
+    }
 }
 
 extension BulletinViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -140,5 +145,11 @@ extension BulletinViewController: LeagueCellDelegate {
 extension BulletinViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.searchBy(searchText)
+    }
+}
+
+extension BulletinViewController: CartViewDelegate {
+    func didTapCheckout() {
+        viewModel.didTapRouteToCheckout()
     }
 }
