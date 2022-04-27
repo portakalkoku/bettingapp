@@ -31,6 +31,9 @@
                             <state key="normal" title="Checkout">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="didTapCheckout:" destination="iN0-l3-epB" eventType="touchUpInside" id="UTr-zC-m5e"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

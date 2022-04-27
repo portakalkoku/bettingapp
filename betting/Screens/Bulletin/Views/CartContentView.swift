@@ -8,9 +8,17 @@
 import Foundation
 import UIKit
 
+protocol CartContentDelegate: AnyObject {
+    func didTapCheckout()
+}
+
 class CartContentView: UIView {
     @IBOutlet weak var multiplierLabel: UILabel!
+    weak var delegate: CartContentDelegate?
     func reloadMultiplier(multiplier: Double) {
         multiplierLabel.text = String(format: "%.2f", multiplier)
+    }
+    @IBAction func didTapCheckout(_ sender: Any) {
+        delegate?.didTapCheckout()
     }
 }

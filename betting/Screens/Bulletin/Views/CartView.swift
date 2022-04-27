@@ -28,3 +28,9 @@ class CartView: UIView {
         cartContentView?.reloadMultiplier(multiplier: multiplier)
     }
 }
+
+extension CartView: CartContentDelegate {
+    func didTapCheckout() {
+        delegate?.didTapCheckout()
+    }
+}
