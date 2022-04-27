@@ -24,8 +24,10 @@ class EventCell: UITableViewCell {
     
     weak var delegate: EventCellDelegate?
     private var odds: [BulletinModels.OddCellModel] = []
+    private var eventCellModel: BulletinModels.EventCellModel?
     func reloadWith(data: BulletinModels.EventCellModel) {
         eventNameLabel.text = data.matchName
+        eventCellModel = data
         odds = data.odds
         collectionView.reloadData()
     }
@@ -49,6 +51,6 @@ extension EventCell: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let odd = odds[indexPath.row]
-        delegate?.didTapOdd(.init(id: odd.id, name: "", price: odd.price, side: odd.type))
+        delegate?.didTapOdd(.init(id: odd.id, name: eventCellModel?.matchName ?? "", price: odd.price, side: odd.type))
     }
 }
