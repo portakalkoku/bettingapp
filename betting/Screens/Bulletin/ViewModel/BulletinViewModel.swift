@@ -140,7 +140,21 @@ extension BulletinViewModel: BulletinViewModelProtocol {
         delegate?.reloadCollectionView()
         delegate?.reloadTableView()
     }
+    
+    func addOrRemoveEventFromCart(event: CartModels.Event) {
+        cart.addOrRemoveEvent(event)
+        delegate?.reloadTableView()
+    }
 }
+
+extension BulletinViewModel {
+    private func setupRx() {
+        cart.events.asObservable().subscribe(onNext: { [self] value in
+           delegate?.reloadCartView(multiplier: cart.getMultiplier())
+        })
+    }
+}
+
 
 extension BulletinViewModel {
     private func processGroups(stringSet: Set<String>) -> [BulletinModels.GroupCellModel] {
