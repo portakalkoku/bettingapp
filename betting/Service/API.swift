@@ -49,8 +49,6 @@ extension API {
                    encoder: urlEncoder).validate().responseData { response in
             switch response.result {
             case .success(let data):
-                let dataStr = String(decoding: data, as: UTF8.self)
-                print("⏩\(dataStr)")
                 completion(.success(data))
             case .failure(_):
                 completion(.failure(.serviceError))
