@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EventCellDelegate: AnyObject {
+    func didTapOdd(_ odd: CartModels.Event)
+}
+
 class EventCell: UITableViewCell {
 
     @IBOutlet weak var eventNameLabel: UILabel!
