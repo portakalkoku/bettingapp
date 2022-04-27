@@ -22,6 +22,7 @@ class EventCell: UITableViewCell {
         }
     }
     
+    weak var delegate: EventCellDelegate?
     private var odds: [BulletinModels.OddCellModel] = []
     func reloadWith(data: BulletinModels.EventCellModel) {
         eventNameLabel.text = data.matchName
