@@ -24,6 +24,7 @@ enum BulletinModels {
     }
     
     struct Odds: Codable {
+        let id: String
         let sport_key: String
         let commence_time: String
         let home_team: String
@@ -54,6 +55,7 @@ enum BulletinModels {
     }
     
     struct OddCellModel {
+        let id: String
         let price: Double
         let selected: Bool
         let type: OddType
