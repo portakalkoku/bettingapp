@@ -15,6 +15,7 @@ protocol BulletinViewModelProtocol {
     func requestOdds(key: String)
     func selectGroup(group: String)
     func addOrRemoveEventFromCart(event: CartModels.Event)
+    func searchBy(_ text: String)
 }
 
 protocol BulletinViewModelDelegate: AnyObject {
@@ -33,6 +34,7 @@ class BulletinViewModel {
     private var groups: [BulletinModels.GroupCellModel] = []
     private var filteredSports: [BulletinModels.Sport] = []
     private var selectedGroup: String?
+    private var searchText: String = ""
     private var odds: [BulletinModels.Odds] = []
     
     let api: API
@@ -115,6 +117,11 @@ extension BulletinViewModel: BulletinViewModelProtocol {
         cart.addOrRemoveEvent(event)
         delegate?.reloadTableView()
     }
+    
+    func searchBy(_ text: String) {
+        searchText = text
+        delegate?.reloadTableView()
+    }
 }
 
 extension BulletinViewModel {
@@ -155,8 +162,13 @@ extension BulletinViewModel {
         return groups
     }
     
-    private func filterLeagues() -> [BulletinModels.Sport] {
-        return sports.filter({$0.group == selectedGroup})
+    private func filterLeagues(_ txt: String = "") -> [BulletinModels.Sport] {
+        if txt.isEmpty {
+            return sports.filter({$0.group == selectedGroup})
+
+        } else {
+            return sports.filter({$0.group == selectedGroup && $0.title.lowercased().contains(txt.lowercased())})
+        }
     }
     
     private func getOutcomes(
@@ -178,8 +190,18 @@ extension BulletinViewModel {
                 }
                 
                 odds = odds.sorted(by: {$0.type.rawValue < $1.type.rawValue})
+                let matchName = "\(odd.home_team)-\(odd.away_team)"
+                if !searchText.isEmpty {
+                    if matchName.contains(searchText) {
+                        return .init(
+                            matchName: matchName,
+                            odds: odds
+                        )
+                    }
+                    return nil
+                }
                 return .init(
-                    matchName: "\(odd.home_team)-\(odd.away_team)",
+                    matchName: matchName,
                     odds: odds
                 )
             }
