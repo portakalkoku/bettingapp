@@ -10,9 +10,6 @@ import UIKit
 
 class CartContentView: UIView {
     @IBOutlet weak var multiplierLabel: UILabel!
-    override func awakeFromNib() {
-    }
-    
     func reloadMultiplier(multiplier: Double) {
         multiplierLabel.text = String(format: "%.2f", multiplier)
     }
