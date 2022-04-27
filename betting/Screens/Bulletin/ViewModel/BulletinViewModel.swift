@@ -41,6 +41,9 @@ class BulletinViewModel {
     
     let api: API
     let cart: Cart
+    
+    var firebaseHelper: FirebaseHelperProtocol?
+    
     init(
         api: API,
         cart: Cart
@@ -104,7 +107,8 @@ extension BulletinViewModel: BulletinViewModelProtocol {
     }
     
     func getOddsOfSport(sportKey: String) -> [BulletinModels.EventCellModel] {
-        getOutcomes(sportKey: sportKey)
+        firebaseHelper?.sendEvent("league_tap", parameters: ["sportKey": sportKey])
+        return getOutcomes(sportKey: sportKey)
     }
   
     func selectGroup(group: String) {
