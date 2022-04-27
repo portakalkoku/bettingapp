@@ -51,6 +51,7 @@ extension LeagueCell: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
         cell.reloadWith(data: events[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
