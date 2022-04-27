@@ -118,6 +118,10 @@ extension BulletinViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension BulletinViewController: LeagueCellDelegate {
+    func didTapOdd(_ odd: CartModels.Event) {
+        viewModel.addOrRemoveEventFromCart(event: odd)
+    }
+    
     func didTapSport(key: String) {
         viewModel.requestOdds(key: key)
     }
