@@ -14,6 +14,7 @@ protocol BulletinViewModelProtocol {
     func requestGroups()
     func requestOdds(key: String)
     func selectGroup(group: String)
+    func addOrRemoveEventFromCart(event: CartModels.Event)
 }
 
 protocol BulletinViewModelDelegate: AnyObject {
@@ -22,9 +23,11 @@ protocol BulletinViewModelDelegate: AnyObject {
     func showErrorMessage()
     func showLoading()
     func hideLoading()
+    func reloadCartView(multiplier: Double)
 }
 
-class BulletinViewModel: BulletinViewModelProtocol {
+class BulletinViewModel {
+
     weak var delegate: BulletinViewModelDelegate?
     private var sports: [BulletinModels.Sport] = []
     private var groups: [BulletinModels.GroupCellModel] = []
