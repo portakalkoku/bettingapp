@@ -8,6 +8,8 @@ target 'betting' do
   # Pods for betting
 
   pod 'Alamofire', '~> 5.4'
+  pod 'RxCocoa', '~> 5.1.1'
+
 
   target 'bettingTests' do
     inherit! :search_paths
