@@ -9,6 +9,7 @@ import UIKit
 
 protocol LeagueCellDelegate: AnyObject {
     func didTapSport(key: String)
+    func didTapOdd(_ odd: CartModels.Event)
 }
 
 class LeagueCell: UITableViewCell {
