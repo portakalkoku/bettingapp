@@ -14,6 +14,7 @@ class BulletinRouter: BulletinRouting {
     weak var viewController: BulletinViewController?
     
     func routeToCheckout(with cart: Cart) {
-        viewController?.navigationController?.pushViewController(UIViewController(), animated: true)
+        let checkoutViewController = CheckoutViewController.build(cart: cart)
+        viewController?.navigationController?.pushViewController(checkoutViewController, animated: true)
     }
 }
