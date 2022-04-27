@@ -37,6 +37,12 @@ class OddCell: UICollectionViewCell {
             indicatorLabel.text = "1"
         }
         
+        if odd.selected {
+            containerView.backgroundColor = .gray
+        } else {
+            containerView.backgroundColor = .clear
+        }
+        
         oddLabel.text = "\(odd.price)"
     }
 }
