@@ -11,8 +11,10 @@ import UIKit
 extension BulletinViewController {
     class func build(api: API) -> UIViewController {
         let viewModel = BulletinViewModel(api: api, cart: Cart())
-        let viewController = BulletinViewController(viewModel: viewModel)
+        let router: BulletinRouter = BulletinRouter()
+        let viewController = BulletinViewController(viewModel: viewModel, router: router)
         viewModel.delegate = viewController
+        router.viewController = viewController
         return viewController
     }
 }

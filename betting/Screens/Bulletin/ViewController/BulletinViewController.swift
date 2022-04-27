@@ -8,8 +8,7 @@
 import UIKit
 
 class BulletinViewController: UIViewController {
-
-    let viewModel: BulletinViewModelProtocol
+    
     @IBOutlet weak var filterCollectionView: UICollectionView! {
         didSet {
             filterCollectionView.delegate = self
@@ -43,10 +42,15 @@ class BulletinViewController: UIViewController {
         }
     }
     
+    let viewModel: BulletinViewModelProtocol
+    let router: BulletinRouting
+    
     init(
-        viewModel: BulletinViewModelProtocol
+        viewModel: BulletinViewModelProtocol,
+        router: BulletinRouting
     ) {
         self.viewModel = viewModel
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
