@@ -36,6 +36,12 @@ class BulletinViewController: UIViewController {
             cartView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         }
     }
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+            searchBar.searchTextField.placeholder = "Search by event or league"
+        }
+    }
     
     init(
         viewModel: BulletinViewModelProtocol
@@ -124,5 +130,11 @@ extension BulletinViewController: LeagueCellDelegate {
     
     func didTapSport(key: String) {
         viewModel.requestOdds(key: key)
+    }
+}
+
+extension BulletinViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchBy(searchText)
     }
 }
