@@ -9,11 +9,15 @@ import RxCocoa
 
 class Cart {
     var events: BehaviorRelay<[CartModels.Event]> = .init(value: [])
+    var firebaseHelper: FirebaseHelperProtocol?
+    
     func addOrRemoveEvent(_ event: CartModels.Event) {
         var events = self.events.value
         if let index = events.firstIndex(where: {$0.id == event.id}) {
+            firebaseHelper?.sendEvent("remove_event", parameters: ["id": event.id])
             events.remove(at: index)
         } else {
+            firebaseHelper?.sendEvent("add_event", parameters: ["id": event.id])
             events.append(event)
         }
         self.events.accept(events)
