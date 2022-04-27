@@ -30,6 +30,12 @@ class BulletinViewController: UIViewController {
             activityIndicator.isHidden = true
         }
     }
+    @IBOutlet weak var cartView: CartView! {
+        didSet {
+            cartView.layer.cornerRadius = 5.0
+            cartView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        }
+    }
     
     init(
         viewModel: BulletinViewModelProtocol
@@ -47,10 +53,15 @@ class BulletinViewController: UIViewController {
         super.viewDidLoad()
         viewModel.requestGroups()
     }
-
 }
 
+
+
 extension BulletinViewController: BulletinViewModelDelegate {
+    func reloadCartView(multiplier: Double) {
+        cartView.reloadViewWith(multiplier)
+    }
+    
     func reloadCollectionView() {
         filterCollectionView.reloadData()
     }
