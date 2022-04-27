@@ -14,6 +14,6 @@ class CartContentView: UIView {
     }
     
     func reloadMultiplier(multiplier: Double) {
-        multiplierLabel.text = "\(multiplier)"
+        multiplierLabel.text = String(format: "%.2f", multiplier)
     }
 }
