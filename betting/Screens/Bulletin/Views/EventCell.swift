@@ -46,4 +46,9 @@ extension EventCell: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         let width = collectionView.frame.width/CGFloat(odds.count)
         return .init(width: width, height: width)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let odd = odds[indexPath.row]
+        delegate?.didTapOdd(.init(id: odd.id, name: "", price: odd.price, side: odd.type))
+    }
 }
