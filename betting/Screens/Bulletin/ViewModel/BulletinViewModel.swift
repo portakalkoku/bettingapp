@@ -33,11 +33,18 @@ class BulletinViewModel: BulletinViewModelProtocol {
     private var odds: [BulletinModels.Odds] = []
     
     let api: API
+    let cart: Cart
     init(
-        api: API
+        api: API,
+        cart: Cart
     ) {
         self.api = api
+        self.cart = cart
+        setupRx()
     }
+}
+
+extension BulletinViewModel: BulletinViewModelProtocol {
     
     func requestGroups() {
         delegate?.showLoading()
