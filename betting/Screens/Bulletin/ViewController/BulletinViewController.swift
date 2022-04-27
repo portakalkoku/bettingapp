@@ -66,6 +66,8 @@ class BulletinViewController: UIViewController {
         hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 }
 
