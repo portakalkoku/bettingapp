@@ -11,7 +11,6 @@
 		2A3CE15FC69730681DCEB8FF /* Pods_betting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78EA238F8D8E9CA0C4128C4 /* Pods_betting.framework */; };
 		3352732E42586EC6C8FAA726 /* Pods_bettingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */; };
 		5F114E9B2818879A006FCAA7 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */; };
-		5F114EA02818A79C006FCAA7 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114E9E2818A79B006FCAA7 /* MainNavigationController.swift */; };
 		5F114EA42818AA0B006FCAA7 /* CartContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F114EA32818AA0B006FCAA7 /* CartContentView.xib */; };
 		5F114EA62818ABCA006FCAA7 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114EA52818ABCA006FCAA7 /* CartView.swift */; };
 		5F114EA82818AE2B006FCAA7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F114EA72818AE2B006FCAA7 /* UIView+Extensions.swift */; };
@@ -66,7 +65,6 @@
 		1DDACBB60D508729D22A8AC7 /* Pods-betting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-betting.release.xcconfig"; path = "Target Support Files/Pods-betting/Pods-betting.release.xcconfig"; sourceTree = "<group>"; };
 		279460147CD1227C4CF163C8 /* Pods_bettingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bettingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F114E9A2818879A006FCAA7 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
-		5F114E9E2818A79B006FCAA7 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5F114EA32818AA0B006FCAA7 /* CartContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartContentView.xib; sourceTree = "<group>"; };
 		5F114EA52818ABCA006FCAA7 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		5F114EA72818AE2B006FCAA7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				5F114EA22818A9EC006FCAA7 /* Views */,
-				5F114E9E2818A79B006FCAA7 /* MainNavigationController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -584,7 +581,6 @@
 				5F790B172814974100B4F4F9 /* ViewController.swift in Sources */,
 				5F790B472814ADB200B4F4F9 /* API+Odds.swift in Sources */,
 				5F114EAB2818B692006FCAA7 /* Cart.swift in Sources */,
-				5F114EA02818A79C006FCAA7 /* MainNavigationController.swift in Sources */,
 				5F114EA62818ABCA006FCAA7 /* CartView.swift in Sources */,
 				5F790B132814974100B4F4F9 /* AppDelegate.swift in Sources */,
 				5F114EB02818C645006FCAA7 /* CartContentView.swift in Sources */,
