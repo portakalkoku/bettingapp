@@ -24,10 +24,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iou-Nh-rkM">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="798"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No event has found, please go back and add some events to the cart!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlD-1Y-eVB">
-                            <rect key="frame" x="20" y="360.5" width="374" height="97.5"/>
+                            <rect key="frame" x="20" y="350.5" width="374" height="97.5"/>
                             <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -42,11 +42,11 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bby-hY-Xq8">
-                    <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="744"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2PO-JE-2Jq">
-                    <rect key="frame" x="20" y="818" width="374" height="44"/>
+                    <rect key="frame" x="20" y="798" width="374" height="44"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="fee" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qij-RL-ea8">
                             <rect key="frame" x="0.0" y="0.0" width="124.5" height="44"/>
@@ -97,7 +97,7 @@
                 <constraint firstItem="Bby-hY-Xq8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Udb-DB-1GK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bby-hY-Xq8" secondAttribute="trailing" id="a6f-p7-fba"/>
                 <constraint firstItem="2PO-JE-2Jq" firstAttribute="bottom" secondItem="iou-Nh-rkM" secondAttribute="bottom" id="p0R-oQ-NVU"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2PO-JE-2Jq" secondAttribute="bottom" id="rlN-I5-g88"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2PO-JE-2Jq" secondAttribute="bottom" constant="20" id="rlN-I5-g88"/>
                 <constraint firstItem="2PO-JE-2Jq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="w6y-hZ-3ji"/>
             </constraints>
             <point key="canvasLocation" x="139" y="99"/>
