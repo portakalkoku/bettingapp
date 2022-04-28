@@ -23,9 +23,9 @@ protocol CheckoutViewModelDelegate: AnyObject {
 class CheckoutViewModel {
     weak var delegate: CheckoutViewModelDelegate?
     
-    let cart: Cart
+    let cart: CartProtocol
     init(
-        cart: Cart
+        cart: CartProtocol
     ) {
         self.cart = cart
     }
@@ -34,7 +34,7 @@ class CheckoutViewModel {
 extension CheckoutViewModel: CheckoutViewModelProtocol {
     func removeEventFromCart(event: CartModels.Event) {
         cart.addOrRemoveEvent(event)
-        if cart.events.value.count > 0 {
+        if cart.getEvents().count > 0 {
             delegate?.reloadMultiplier(with: cart.getMultiplier())
             delegate?.reloadTableView()
         } else {
@@ -43,7 +43,7 @@ extension CheckoutViewModel: CheckoutViewModelProtocol {
     }
     
     func getCartEvents() -> [CartModels.Event] {
-        cart.events.value
+        cart.getEvents()
     }
     
     func getMultiplier() -> String {
