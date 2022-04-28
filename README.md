@@ -13,6 +13,8 @@ Selecting odd triggers Cart class which is an RX element.
 
 If Cart has one or more odds in it, then the checkout button becomes visible and active to route to the checkout page.
 
+**NOTE:** The search feature works if a league is selected and some matches are loaded.
+
 ![](https://github.com/portakalkoku/bettingapp/blob/master/app.gif)
 
 On the checkout page, the user can set a fee to multiply the cart ratio. In addition to that remove a match from the cart.
