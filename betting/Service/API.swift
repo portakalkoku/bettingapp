@@ -12,6 +12,10 @@ public protocol TargetType {
     var parameters: [String: String] { get }
 }
 
+protocol APIProtocol {
+    func request(type: TargetType, completion: @escaping (Result<Data, APIError>) -> ())
+}
+
 class API {
     
     private var baseUrl: URL {
@@ -34,7 +38,7 @@ class API {
         }
     }
 }
-extension API {
+extension API: APIProtocol {
      func request(type: TargetType, completion: @escaping (Result<Data, APIError>) -> ()) {
         let urlEncoder = URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(), destination: .queryString)
         
@@ -49,6 +53,7 @@ extension API {
                    encoder: urlEncoder).validate().responseData { response in
             switch response.result {
             case .success(let data):
+                print(String(decoding: data, as: UTF8.self))
                 completion(.success(data))
             case .failure(_):
                 completion(.failure(.serviceError))
