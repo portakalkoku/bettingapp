@@ -67,6 +67,7 @@ class BulletinViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.setup()
         tableView.reloadData()
     }
 }

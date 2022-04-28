@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol BulletinViewModelProtocol {
     func getGroupsList() -> [BulletinModels.GroupCellModel]
@@ -17,6 +18,7 @@ protocol BulletinViewModelProtocol {
     func addOrRemoveEventFromCart(event: CartModels.Event)
     func searchBy(_ text: String)
     func didTapRouteToCheckout()
+    func setup()
 }
 
 protocol BulletinViewModelDelegate: AnyObject {
@@ -51,6 +53,8 @@ class BulletinViewModel: BulletinViewModelProtocol  {
     weak var delegate: BulletinViewModelDelegate?
 
     var firebaseHelper: FirebaseHelperProtocol?
+    
+    private var disposeBag = DisposeBag()
     
     let api: APIProtocol
     let cart: CartProtocol
@@ -91,7 +95,7 @@ class BulletinViewModel: BulletinViewModelProtocol  {
             switch result {
             case let .success(data):
                 let jsonDecoder = JSONDecoder()
-                guard let data = try? jsonDecoder.decode([BulletinModels.Odds].self, from: data) else {
+                guard let data = try? jsonDecoder.decode([BulletinModels.Odds].self, from: data), data.count > 0 else {
                     self.delegate?.showErrorMessage()
                     return
                 }
@@ -137,15 +141,20 @@ class BulletinViewModel: BulletinViewModelProtocol  {
     }
     
     func didTapRouteToCheckout() {
+        disposeBag = DisposeBag()
         delegate?.routeToCheckout(cart: cart)
+    }
+    
+    func setup() {
+        setupRx()
     }
 }
 
 extension BulletinViewModel {
     private func setupRx() {
-        cart.events.asObservable().subscribe(onNext: { [self] value in
+       cart.events.asObservable().subscribe(onNext: { [self] value in
            delegate?.reloadCartView(multiplier: cart.getMultiplier())
-        })
+       }).disposed(by: disposeBag)
     }
 }
 
