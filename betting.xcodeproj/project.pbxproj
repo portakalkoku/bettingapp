@@ -182,22 +182,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5F114E9C2818A765006FCAA7 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				5F114EA22818A9EC006FCAA7 /* Views */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		5F114EA22818A9EC006FCAA7 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
-			path = "Vİew";
-			sourceTree = "<group>";
-		};
 		5F114EA92818B688006FCAA7 /* RX */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				5F4338D42819D5B20024DC52 /* Checkout */,
-				5F114E9C2818A765006FCAA7 /* Navigation */,
 				5F6F8490281541ED00366D56 /* Bulletin */,
 			);
 			path = Screens;
