@@ -40,7 +40,7 @@ class BulletinViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
             searchBar.delegate = self
-            searchBar.searchTextField.placeholder = "Search by event or league"
+            searchBar.searchTextField.placeholder = "Search an event"
         }
     }
     
