@@ -29,32 +29,39 @@ protocol BulletinViewModelDelegate: AnyObject {
     func routeToCheckout(cart: CartProtocol)
 }
 
-class BulletinViewModel {
+struct BulletinViewModelDataStore{
+     var sports: [BulletinModels.Sport]
+     var groups: [BulletinModels.GroupCellModel]
+     var filteredSports: [BulletinModels.Sport]
+     var selectedGroup: String?
+     var searchText: String
+     var odds: [BulletinModels.Odds]
+}
 
+class BulletinViewModel: BulletinViewModelProtocol  {
+    
+    var dataStore: BulletinViewModelDataStore = .init(
+        sports: [],
+        groups: [],
+        filteredSports: [],
+        selectedGroup: nil,
+        searchText: "",
+        odds: [])
+    
     weak var delegate: BulletinViewModelDelegate?
-    private var sports: [BulletinModels.Sport] = []
-    private var groups: [BulletinModels.GroupCellModel] = []
-    private var filteredSports: [BulletinModels.Sport] = []
-    private var selectedGroup: String?
-    private var searchText: String = ""
-    private var odds: [BulletinModels.Odds] = []
-    
-    let api: API
-    let cart: CartProtocol
-    
+
     var firebaseHelper: FirebaseHelperProtocol?
     
+    let api: APIProtocol
+    let cart: CartProtocol
     init(
-        api: API,
+        api: APIProtocol,
         cart: CartProtocol
     ) {
         self.api = api
         self.cart = cart
         setupRx()
     }
-}
-
-extension BulletinViewModel: BulletinViewModelProtocol {
     
     func requestGroups() {
         delegate?.showLoading()
@@ -68,8 +75,8 @@ extension BulletinViewModel: BulletinViewModelProtocol {
                     return
                 }
                 
-                self.sports = data
-                self.groups = self.processGroups(stringSet: Set(data.map({$0.group})))
+                self.dataStore.sports = data
+                self.dataStore.groups = self.processGroups(stringSet: Set(data.map({$0.group})))
                 self.delegate?.reloadCollectionView()
             case .failure(_):
                 self.delegate?.showErrorMessage()
@@ -88,8 +95,8 @@ extension BulletinViewModel: BulletinViewModelProtocol {
                     self.delegate?.showErrorMessage()
                     return
                 }
-                if !self.odds.contains(where: {$0.sport_key == data[0].sport_key}) {
-                    self.odds.append(contentsOf: data)
+                if !self.dataStore.odds.contains(where: {$0.sport_key == data[0].sport_key}) {
+                    self.dataStore.odds.append(contentsOf: data)
                     self.delegate?.reloadTableView()
                 }
             case .failure(_):
@@ -99,11 +106,11 @@ extension BulletinViewModel: BulletinViewModelProtocol {
     }
 
     func getGroupsList() -> [BulletinModels.GroupCellModel] {
-        groups
+        dataStore.groups
     }
     
     func getLeagueList() -> [BulletinModels.Sport] {
-        filteredSports
+        dataStore.filteredSports
     }
     
     func getOddsOfSport(sportKey: String) -> [BulletinModels.EventCellModel] {
@@ -112,9 +119,9 @@ extension BulletinViewModel: BulletinViewModelProtocol {
     }
   
     func selectGroup(group: String) {
-        selectedGroup = group
-        groups = processGroups(stringSet: Set(sports.map({$0.group})))
-        filteredSports = filterLeagues()
+        dataStore.selectedGroup = group
+        dataStore.groups = processGroups(stringSet: Set(dataStore.sports.map({$0.group})))
+        dataStore.filteredSports = filterLeagues()
         delegate?.reloadCollectionView()
         delegate?.reloadTableView()
     }
@@ -125,7 +132,7 @@ extension BulletinViewModel: BulletinViewModelProtocol {
     }
     
     func searchBy(_ text: String) {
-        searchText = text
+        dataStore.searchText = text
         delegate?.reloadTableView()
     }
     
@@ -146,7 +153,7 @@ extension BulletinViewModel {
 extension BulletinViewModel {
     private func processGroups(stringSet: Set<String>) -> [BulletinModels.GroupCellModel] {
         var groups: [BulletinModels.GroupCellModel]  = []
-        if let selectedGroup = selectedGroup {
+        if let selectedGroup = dataStore.selectedGroup {
             groups = stringSet.map { key in
                 return BulletinModels.GroupCellModel.init(
                     image: SportType.init(rawValue: key)?.getSportIcon() ?? "medal",
@@ -165,8 +172,8 @@ extension BulletinViewModel {
             let firstElement = groups[0]
             groups.remove(at: 0)
             groups.insert(.init(image: firstElement.image, title: firstElement.title, selected: true), at: 0)
-            selectedGroup = firstElement.title
-            filteredSports = filterLeagues()
+            dataStore.selectedGroup = firstElement.title
+            dataStore.filteredSports = filterLeagues()
             delegate?.reloadTableView()
         }
         return groups
@@ -174,10 +181,10 @@ extension BulletinViewModel {
     
     private func filterLeagues(_ txt: String = "") -> [BulletinModels.Sport] {
         if txt.isEmpty {
-            return sports.filter({$0.group == selectedGroup})
+            return dataStore.sports.filter({$0.group == dataStore.selectedGroup})
 
         } else {
-            return sports.filter({$0.group == selectedGroup && $0.title.lowercased().contains(txt.lowercased())})
+            return dataStore.sports.filter({$0.group == dataStore.selectedGroup && $0.title.lowercased().contains(txt.lowercased())})
         }
     }
     
@@ -185,7 +192,7 @@ extension BulletinViewModel {
         sportKey: String
     ) -> [BulletinModels.EventCellModel] {
         
-        let filteredOdds = odds.filter({$0.sport_key == sportKey})
+        let filteredOdds = dataStore.odds.filter({$0.sport_key == sportKey})
         let mapped: [BulletinModels.EventCellModel?] = filteredOdds.map { odd in
             if odd.bookmakers.count > 0, let outcomes = odd.bookmakers[0].markets.first(where: {$0.key == "h2h"})?.outcomes {
                 var odds: [BulletinModels.OddCellModel] = []
@@ -201,8 +208,8 @@ extension BulletinViewModel {
                 
                 odds = odds.sorted(by: {$0.type.rawValue < $1.type.rawValue})
                 let matchName = "\(odd.home_team)-\(odd.away_team)"
-                if !searchText.isEmpty {
-                    if matchName.contains(searchText) {
+                if !dataStore.searchText.isEmpty {
+                    if matchName.contains(dataStore.searchText) {
                         return .init(
                             matchName: matchName,
                             odds: odds
