@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension CheckoutViewController {
-    static func build(cart: Cart) -> UIViewController {
+    static func build(cart: CartProtocol) -> UIViewController {
         let viewModel: CheckoutViewModel = CheckoutViewModel.init(cart: cart)
         let cartViewController: CheckoutViewController = .init(viewModel: viewModel)
         viewModel.delegate = cartViewController

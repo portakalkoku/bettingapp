@@ -100,7 +100,7 @@ extension BulletinViewController: BulletinViewModelDelegate {
         // TODO: (cagri) - show error message
     }
     
-    func routeToCheckout(cart: Cart) {
+    func routeToCheckout(cart: CartProtocol) {
         router.routeToCheckout(with: cart)
     }
 }

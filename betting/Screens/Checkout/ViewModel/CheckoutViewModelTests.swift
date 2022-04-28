@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import RxCocoa
 @testable import betting
 
 class CheckoutViewModelTests: XCTestCase {
@@ -88,7 +89,7 @@ extension CheckoutViewModelTests {
 }
 
 class CartSpy: CartProtocol {
-    
+    var events: BehaviorRelay<[CartModels.Event]> = .init(value: [])
     var addOrRemoveEventCalled = false
     var checkIfOddExistInCartCalled = false
     var getMultiplierCalled = false

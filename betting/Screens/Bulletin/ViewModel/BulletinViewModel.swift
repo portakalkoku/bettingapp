@@ -26,7 +26,7 @@ protocol BulletinViewModelDelegate: AnyObject {
     func showLoading()
     func hideLoading()
     func reloadCartView(multiplier: Double)
-    func routeToCheckout(cart: Cart)
+    func routeToCheckout(cart: CartProtocol)
 }
 
 class BulletinViewModel {
@@ -40,13 +40,13 @@ class BulletinViewModel {
     private var odds: [BulletinModels.Odds] = []
     
     let api: API
-    let cart: Cart
+    let cart: CartProtocol
     
     var firebaseHelper: FirebaseHelperProtocol?
     
     init(
         api: API,
-        cart: Cart
+        cart: CartProtocol
     ) {
         self.api = api
         self.cart = cart

@@ -12,6 +12,7 @@ protocol CartProtocol {
     func checkIfOddExistInCart(_ id: String, type: BulletinModels.OddType) -> Bool
     func getMultiplier() -> Double
     func getEvents() -> [CartModels.Event]
+    var events: BehaviorRelay<[CartModels.Event]> { get set }
 }
 
 class Cart: CartProtocol {
