@@ -34,6 +34,7 @@
 		5F64898B2815F82E0028FE34 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64898A2815F82E0028FE34 /* UITableView+Extensions.swift */; };
 		5F64898E281601550028FE34 /* OddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F64898C281601550028FE34 /* OddCell.swift */; };
 		5F64898F281601550028FE34 /* OddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F64898D281601550028FE34 /* OddCell.xib */; };
+		5F6933B9281A9E680098445B /* CheckoutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6933B8281A9E680098445B /* CheckoutViewModelTests.swift */; };
 		5F6F848E2815418900366D56 /* BulletinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6F848C2815418900366D56 /* BulletinViewController.swift */; };
 		5F6F848F2815418900366D56 /* BulletinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F6F848D2815418900366D56 /* BulletinViewController.xib */; };
 		5F6F84982815427200366D56 /* BulletinSportsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6F84962815427200366D56 /* BulletinSportsFilterCell.swift */; };
@@ -98,6 +99,7 @@
 		5F64898A2815F82E0028FE34 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		5F64898C281601550028FE34 /* OddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddCell.swift; sourceTree = "<group>"; };
 		5F64898D281601550028FE34 /* OddCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OddCell.xib; sourceTree = "<group>"; };
+		5F6933B8281A9E680098445B /* CheckoutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModelTests.swift; sourceTree = "<group>"; };
 		5F6F848C2815418900366D56 /* BulletinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinViewController.swift; sourceTree = "<group>"; };
 		5F6F848D2815418900366D56 /* BulletinViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulletinViewController.xib; sourceTree = "<group>"; };
 		5F6F84962815427200366D56 /* BulletinSportsFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinSportsFilterCell.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				5F4338DA2819D6600024DC52 /* CheckoutViewModel.swift */,
+				5F6933B8281A9E680098445B /* CheckoutViewModelTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F6933B9281A9E680098445B /* CheckoutViewModelTests.swift in Sources */,
 				5F790B2A2814974700B4F4F9 /* bettingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
