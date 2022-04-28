@@ -8,6 +8,7 @@
 import UIKit
 
 class BulletinSportsFilterCell: UICollectionViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var groupIcon: UIImageView!
     @IBOutlet weak var groupTitle: UILabel!
     

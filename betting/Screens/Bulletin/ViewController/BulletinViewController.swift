@@ -9,6 +9,7 @@ import UIKit
 
 class BulletinViewController: UIViewController {
     
+    // MARK: - IBOutlets
     @IBOutlet weak var filterCollectionView: UICollectionView! {
         didSet {
             filterCollectionView.delegate = self
@@ -43,6 +44,7 @@ class BulletinViewController: UIViewController {
         }
     }
     
+    // MARK: - Init
     let viewModel: BulletinViewModelProtocol
     let router: BulletinRouting
     
@@ -59,7 +61,7 @@ class BulletinViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.requestGroups()
@@ -73,7 +75,7 @@ class BulletinViewController: UIViewController {
 }
 
 
-
+// MARK: - BulletinViewModelDelegate
 extension BulletinViewController: BulletinViewModelDelegate {
     func reloadCartView(multiplier: Double) {
         cartView.reloadViewWith(multiplier)
@@ -106,6 +108,7 @@ extension BulletinViewController: BulletinViewModelDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension BulletinViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.getGroupsList().count
@@ -123,6 +126,7 @@ extension BulletinViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension BulletinViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.getLeagueList().count
@@ -135,9 +139,10 @@ extension BulletinViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         return cell
     }
-
+    
 }
 
+// MARK: - LeagueCellDelegate
 extension BulletinViewController: LeagueCellDelegate {
     func didTapOdd(_ odd: CartModels.Event) {
         viewModel.addOrRemoveEventFromCart(event: odd)
@@ -148,12 +153,14 @@ extension BulletinViewController: LeagueCellDelegate {
     }
 }
 
+// MARK: - UISearchBarDelegate
 extension BulletinViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.searchBy(searchText)
     }
 }
 
+// MARK: - CartViewDelegate
 extension BulletinViewController: CartViewDelegate {
     func didTapCheckout() {
         viewModel.didTapRouteToCheckout()

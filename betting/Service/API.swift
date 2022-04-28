@@ -38,8 +38,10 @@ class API {
         }
     }
 }
+
+// MARK: - APIProtocol
 extension API: APIProtocol {
-     func request(type: TargetType, completion: @escaping (Result<Data, APIError>) -> ()) {
+    func request(type: TargetType, completion: @escaping (Result<Data, APIError>) -> ()) {
         let urlEncoder = URLEncodedFormParameterEncoder(encoder: URLEncodedFormEncoder(), destination: .queryString)
         
         var parameters = type.parameters
@@ -61,6 +63,8 @@ extension API: APIProtocol {
         }
     }
 }
+
+// MARK: - Error
 enum APIError: Error {
     case wrongMapping
     case serviceError

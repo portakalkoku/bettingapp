@@ -12,7 +12,8 @@ protocol EventCellDelegate: AnyObject {
 }
 
 class EventCell: UITableViewCell {
-
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -25,6 +26,7 @@ class EventCell: UITableViewCell {
     weak var delegate: EventCellDelegate?
     private var odds: [BulletinModels.OddCellModel] = []
     private var eventCellModel: BulletinModels.EventCellModel?
+    
     func reloadWith(data: BulletinModels.EventCellModel) {
         eventNameLabel.text = data.matchName
         eventCellModel = data
@@ -33,6 +35,7 @@ class EventCell: UITableViewCell {
     }
 }
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension EventCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         odds.count

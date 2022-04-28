@@ -10,6 +10,7 @@ protocol BulletinRouting {
     func routeToCheckout(with cart: CartProtocol)
 }
 
+// MARK: - BulletinRouting
 class BulletinRouter: BulletinRouting {
     weak var viewController: BulletinViewController?
     

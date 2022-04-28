@@ -8,6 +8,8 @@
 import UIKit
 
 class CheckoutViewController: UIViewController {
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!{
         didSet {
             tableView.delegate = self
@@ -33,6 +35,7 @@ class CheckoutViewController: UIViewController {
     }
     @IBOutlet weak var stackView: UIStackView!
     
+    // MARK: - Init
     let viewModel: CheckoutViewModelProtocol
     init(
         viewModel: CheckoutViewModelProtocol
@@ -44,10 +47,13 @@ class CheckoutViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    // MARK: - Lifecyle
     override func viewDidLoad() {
         hideKeyboardWhenTappedAround()
     }
+    
+    // MARK: - IBActions
     @IBAction func didChangeText(_ sender: Any) {
         guard let text = feeTextField.text, let double = Double(text) else {
             viewModel.calculateMaxReturn(value: 1.0)
@@ -57,6 +63,7 @@ class CheckoutViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getCartEvents().count
@@ -71,6 +78,7 @@ extension CheckoutViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - CheckoutViewModelDelegate
 extension CheckoutViewController: CheckoutViewModelDelegate {
     func reloadTableView() {
         emptyView.isHidden = true
@@ -78,7 +86,7 @@ extension CheckoutViewController: CheckoutViewModelDelegate {
         tableView.isHidden = false
         tableView.reloadData()
     }
-
+    
     func showEmptyScreen() {
         emptyView.isHidden = false
         stackView.isHidden = true
@@ -90,6 +98,7 @@ extension CheckoutViewController: CheckoutViewModelDelegate {
     }
 }
 
+// MARK: - EventTableViewCellDelegate
 extension CheckoutViewController: EventTableViewCellDelegate {
     func didTapRemoveEventFromCart(event: CartModels.Event) {
         viewModel.removeEventFromCart(event: event)

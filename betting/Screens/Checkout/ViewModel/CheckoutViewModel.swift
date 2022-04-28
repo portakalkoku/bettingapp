@@ -31,6 +31,7 @@ class CheckoutViewModel {
     }
 }
 
+// MARK: - CheckoutViewModelProtocol
 extension CheckoutViewModel: CheckoutViewModelProtocol {
     func removeEventFromCart(event: CartModels.Event) {
         cart.addOrRemoveEvent(event)

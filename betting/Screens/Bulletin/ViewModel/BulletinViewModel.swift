@@ -32,30 +32,29 @@ protocol BulletinViewModelDelegate: AnyObject {
 }
 
 struct BulletinViewModelDataStore{
-     var sports: [BulletinModels.Sport]
-     var groups: [BulletinModels.GroupCellModel]
-     var filteredSports: [BulletinModels.Sport]
-     var selectedGroup: String?
-     var searchText: String
-     var odds: [BulletinModels.Odds]
+    var sports: [BulletinModels.Sport]
+    var groups: [BulletinModels.GroupCellModel]
+    var filteredSports: [BulletinModels.Sport]
+    var selectedGroup: String?
+    var searchText: String
+    var odds: [BulletinModels.Odds]
 }
 
+// MARK: - BulletinViewModelProtocol
 class BulletinViewModel: BulletinViewModelProtocol  {
-    
+    var firebaseHelper: FirebaseHelperProtocol?
+    weak var delegate: BulletinViewModelDelegate?
+    private var disposeBag = DisposeBag()
     var dataStore: BulletinViewModelDataStore = .init(
         sports: [],
         groups: [],
         filteredSports: [],
         selectedGroup: nil,
         searchText: "",
-        odds: [])
+        odds: []
+    )
     
-    weak var delegate: BulletinViewModelDelegate?
-
-    var firebaseHelper: FirebaseHelperProtocol?
-    
-    private var disposeBag = DisposeBag()
-    
+    // MARK: - init
     let api: APIProtocol
     let cart: CartProtocol
     init(
@@ -108,7 +107,7 @@ class BulletinViewModel: BulletinViewModelProtocol  {
             }
         }
     }
-
+    
     func getGroupsList() -> [BulletinModels.GroupCellModel] {
         dataStore.groups
     }
@@ -121,7 +120,7 @@ class BulletinViewModel: BulletinViewModelProtocol  {
         firebaseHelper?.sendEvent("league_tap", parameters: ["sportKey": sportKey])
         return getOutcomes(sportKey: sportKey)
     }
-  
+    
     func selectGroup(group: String) {
         dataStore.selectedGroup = group
         dataStore.groups = processGroups(stringSet: Set(dataStore.sports.map({$0.group})))
@@ -152,9 +151,9 @@ class BulletinViewModel: BulletinViewModelProtocol  {
 
 extension BulletinViewModel {
     private func setupRx() {
-       cart.events.asObservable().subscribe(onNext: { [self] value in
-           delegate?.reloadCartView(multiplier: cart.getMultiplier())
-       }).disposed(by: disposeBag)
+        cart.events.asObservable().subscribe(onNext: { [self] value in
+            delegate?.reloadCartView(multiplier: cart.getMultiplier())
+        }).disposed(by: disposeBag)
     }
 }
 
@@ -191,7 +190,7 @@ extension BulletinViewModel {
     private func filterLeagues(_ txt: String = "") -> [BulletinModels.Sport] {
         if txt.isEmpty {
             return dataStore.sports.filter({$0.group == dataStore.selectedGroup})
-
+            
         } else {
             return dataStore.sports.filter({$0.group == dataStore.selectedGroup && $0.title.lowercased().contains(txt.lowercased())})
         }

@@ -11,6 +11,8 @@ protocol EventTableViewCellDelegate: AnyObject {
 }
 
 class EventTableViewCell: UITableViewCell {
+    
+    // MARK: - Outlets
     @IBOutlet weak var matchNameLabel: UILabel!
     @IBOutlet weak var oddLabel: UILabel!
     @IBOutlet weak var ratioLabel: UILabel!
@@ -18,6 +20,7 @@ class EventTableViewCell: UITableViewCell {
     
     private var event: CartModels.Event?
     weak var delegate: EventTableViewCellDelegate?
+    
     func reloadWith(event: CartModels.Event) {
         self.event = event
         matchNameLabel.text = event.name
@@ -32,11 +35,9 @@ class EventTableViewCell: UITableViewCell {
         ratioLabel.text = "\(event.price)"
     }
     
+    // MARK: - IBActions
     @IBAction func removeEventFromCart(_ sender: Any) {
-        guard let event = event else {
-            return
-        }
-
+        guard let event = event else { return }
         delegate?.didTapRemoveEventFromCart(event: event)
     }
 }

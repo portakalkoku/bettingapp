@@ -13,6 +13,7 @@ protocol LeagueCellDelegate: AnyObject {
 }
 
 class LeagueCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -48,7 +49,8 @@ class LeagueCell: UITableViewCell {
     }
 }
 
-extension LeagueCell: UITableViewDelegate, UITableViewDataSource{
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension LeagueCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
         cell.reloadWith(data: events[indexPath.row])
@@ -61,6 +63,7 @@ extension LeagueCell: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+// MARK: - EventCellDelegate
 extension LeagueCell: EventCellDelegate {
     func didTapOdd(_ odd: CartModels.Event) {
         delegate?.didTapOdd(odd)

@@ -8,7 +8,8 @@
 import UIKit
 
 class OddCell: UICollectionViewCell {
-
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var containerView: UIView! {
         didSet {
             containerView.layer.cornerRadius = 5.0

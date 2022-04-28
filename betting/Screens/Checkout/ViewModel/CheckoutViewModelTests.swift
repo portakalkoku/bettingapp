@@ -21,7 +21,7 @@ class CheckoutViewModelTests: XCTestCase {
     override func tearDown() {
         sut = nil
     }
-
+    
     private func setupViewModel() {
         sut = .init(cart: cartSpy)
         sut.delegate = delegateSpy
@@ -79,7 +79,7 @@ class CheckoutViewModelTests: XCTestCase {
         sut.calculateMaxReturn(value: 5.0)
         XCTAssertTrue(delegateSpy.reloadMultiplierValue == 25.00)
     }
-
+    
 }
 
 extension CheckoutViewModelTests {

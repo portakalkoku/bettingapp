@@ -31,7 +31,7 @@ class CartView: UIView {
         cartContentView?.reloadMultiplier(multiplier: multiplier)
     }
 }
-
+// MARK: - Weak CartContentDelegate
 extension CartView: CartContentDelegate {
     func didTapCheckout() {
         delegate?.didTapCheckout()

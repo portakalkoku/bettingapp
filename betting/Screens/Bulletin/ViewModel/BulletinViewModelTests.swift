@@ -147,7 +147,7 @@ class BulletinViewModelTests: XCTestCase {
         XCTAssertTrue(firebaseHelper.eventValue == "league_tap")
         XCTAssertTrue(firebaseHelper.parametersValue!["sportKey"] as! String == "sport1")
     }
-        
+    
     func testAddOrRemoveCartEventFromCart_CallsReloadTableView() {
         sut.addOrRemoveEventFromCart(event: .init(id: "", name: "", price: 52.0, side: .away))
         XCTAssertTrue(delegateSpy.reloadTableViewCalled)
@@ -199,7 +199,7 @@ class BulletinViewModelTests: XCTestCase {
     private func createMockEvent() -> CartModels.Event {
         .init(id: "", name: "", price: 2.5, side: .away)
     }
- 
+    
     private func createMeaningfulSportData() -> Data {
         .init("[{\"key\":\"americanfootball_ncaaf\",\"group\":\"American Football\",\"title\":\"NCAAF\",\"description\":\"US College Football\",\"active\":true,\"has_outrights\":false}, {\"key\":\"americanfootball_ncaaf\",\"group\":\"American Football\",\"title\":\"NCAAF\",\"description\":\"US College Football\",\"active\":true,\"has_outrights\":false}]".utf8)
     }
