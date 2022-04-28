@@ -7,7 +7,14 @@
 
 import RxCocoa
 
-class Cart {
+protocol CartProtocol {
+    func addOrRemoveEvent(_ event: CartModels.Event)
+    func checkIfOddExistInCart(_ id: String, type: BulletinModels.OddType) -> Bool
+    func getMultiplier() -> Double
+    func getEvents() -> [CartModels.Event]
+}
+
+class Cart: CartProtocol {
     var events: BehaviorRelay<[CartModels.Event]> = .init(value: [])
     var firebaseHelper: FirebaseHelperProtocol?
     
@@ -34,5 +41,9 @@ class Cart {
             multiplier = multiplier * event.price
         }
         return multiplier
+    }
+    
+    func getEvents() -> [CartModels.Event] {
+        events.value
     }
 }
